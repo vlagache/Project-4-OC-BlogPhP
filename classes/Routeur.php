@@ -1,5 +1,5 @@
 <?php
-
+require_once(CONTROLLER.'frontend.php');
 /*
 Class Routeur
 create routes and find controller

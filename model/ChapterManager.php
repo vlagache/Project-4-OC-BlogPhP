@@ -2,7 +2,7 @@
 Function qui permettent de récuperer un article ou tout les articles -->
 
 <?php
-require_once('model/DbManager.php');
+require_once(MODEL.'DbManager.php');
 
 
 class ChapterManager extends DbManager {

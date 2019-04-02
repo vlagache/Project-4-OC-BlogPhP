@@ -3,7 +3,7 @@ require les fichiers du modele.
 function qui vont etre appellé dans le routeur pour afficher tel ou tel page.-->
 <?php
 
-require_once('model/ChapterManager.php');
+require_once(MODEL.'ChapterManager.php');
 
 function listChapters(){
   // Creation d'un objet ChapterManager
