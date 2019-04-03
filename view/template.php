@@ -8,7 +8,26 @@
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     </head>
 
+    <header>
+      <div class="image_title_header">
+        <img src="<?= ASSETS;?>images/road-alaska-header.jpg" alt="Photo d'une route en Alaska" class="imgHeader" />
+        <div class="textHeader">
+          <h1 class="titleMain"> Billet simple pour l'Alaska</h1>
+          <span class="introduction"> La publication épisodique du nouveau livre de Jean Forteroche </span>
+        </div>
+      </div>
+    </header>
+
     <body>
         <?= $content ?>
     </body>
+
+    <footer>
+        <div class="contact">
+          Contact / Reseaux sociaux / Copyright
+        </div>
+        <div class="admin">
+          Zone admin
+        </div>
+    </footer>
 </html>
