@@ -1,12 +1,15 @@
-<!-- Routeur -->
+
 <?php
 
 require_once('config.php');
 require('classes/Routeur.php');
 
-$action = $_GET['action'];
 
-
+if(isset($_GET['action'])){
+  $action = $_GET['action'];
+} else {
+  $action = 'listChapters';
+}
 
 
 $routeur = new Routeur($action);

@@ -16,12 +16,19 @@
 
 <h2 id="commentTitle">Commentaires</h2>
 <div id="contentComment">
-  Liste des commentaires
+  <?php
+  while ($data = $comments->fetch())
+  {
+   ?>
+   <p><strong><?= htmlspecialchars($data['author']) ?></strong> le <?= $data['comment_date_fr'] ?></p>
+   <p><?= nl2br(htmlspecialchars($data['comment'])) ?></p>
+   <?php
+  }
+  ?>
 </div>
 
 <h2 id="postCommentTitle">Ecrire un commentaire</h2>
-  <form action="listChapters" method="post">
-    <!-- index.php?action=addComment&amp;id=<?= $post['id'] ?> -->
+  <form action="index.php?action=addComment&amp;id=<?= $chapter['id'] ?>" method="post">
       <div>
           <label for="author">Auteur</label><br />
           <input type="text" id="author" name="author" value="   Votre nom " />
