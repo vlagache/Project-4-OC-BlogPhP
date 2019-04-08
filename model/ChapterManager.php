@@ -3,6 +3,7 @@ Function qui permettent de récuperer un article ou tout les articles -->
 
 <?php
 require_once(MODEL.'DbManager.php');
+require_once('classes/Chapter.php');
 
 
 class ChapterManager extends DbManager {
@@ -20,6 +21,11 @@ class ChapterManager extends DbManager {
     $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
     $chapter = $req->fetch();
+
+
+    // $chapterObj = new Chapter();
+    // $chapterObj->hydrate($chapter);
+    // echo '<pre>'; print_r($chapterObj); exit;
 
     return $chapter;
   }

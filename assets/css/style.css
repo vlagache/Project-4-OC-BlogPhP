@@ -8,6 +8,7 @@ h2
   text-align: center;
   font-family: 'Playfair Display', serif;
 }
+body{background: #f4f8fb;}
 /* ============ HOME ============ */
 .image_title_header
 {
@@ -40,36 +41,22 @@ h2
   font-size: 1.5em;
 }
 /***** Block Home ******/
-#blockHome
-{
-  border:2px solid green;
-  display: flex;
-  /* position: relative;
-  top: -85px; */
 
-}
 #chapters
 {
-  position:relative;
-  left: 0%;
+  position: relative;
+  top: -85px;
+  margin:auto;
   border:3px solid red;
-  width: 75%;
+  width: 90%;
   display:flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-#infos
-{
-  border:3px solid blue;
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .chapter
 {
   z-index: 2;
-  padding: 1%;
+  padding: 2%;
   position: relative;
   border:1px solid black;
   margin: 1%;
@@ -93,33 +80,43 @@ h2
   position:absolute;
   right: 5%;
 }
-#lastChapters
+#lastChapters,
+#lastComments
 {
-  margin-left: auto;
+  margin-left:auto;
   margin-right: auto;
-  margin-top: 17px;
+  margin-bottom: 25px;
+  z-index: 2;
+  border:1px solid black;
+  width: 40%;
+  box-shadow: 3px 3px 5px grey;
+  background-color: white;
+
 }
+
 #lastChapters h2,
 #lastComments h2
 {margin-top: 15px;}
 
-.tableOfContent
+#tableOfContent,
+#listOfLastComments
 {
-  border:2px solid red;
-}
-#lastComments{margin: auto;}
-#lastChapters,
-#lastComments
-{
-  z-index: 2;
-  border:1px solid black;
   width: 60%;
-  height: 300px;
-  border-radius: 2%;
-  box-shadow: 3px 3px 5px grey;
-  background-color: white;
-  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
 }
+.commentHome
+{
+  text-align: center;
+  padding: 1%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed black;
+}
+
 
 /* ============ CHAPTER VIEW =========== */
 #chapterViewTitle,
@@ -169,7 +166,30 @@ form,
 {
   width: 50%;
   margin:auto;
-  height: 300px;
+  height: auto;
+
+}
+#blabla
+{
+  border:1px solid black;
+  box-shadow: 3px 3px 5px grey;
+  width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: white;
+}
+.commentChapter
+{
+  width: 50%;
+  padding: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-bottom: 1px dashed black;
 
 }
 form
@@ -247,17 +267,11 @@ footer
   border-top:1px solid black;
   height: 100px;
   width: 100%;
-  display: flex;
 }
-.contact
+.footer
 {
   height: 100%;
-  width: 80%;
+  width: 100%;
   background: linear-gradient(to right, #3f647e, #7ca49c);
-  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
-}
-.admin
-{
-  width: 20%;
 
 }

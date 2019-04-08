@@ -4,11 +4,21 @@ require_once(MODEL.'DbManager.php');
 
 
 class CommentManager extends DbManager {
-  // Return all comments
+
+
+  // Return 5 last comments & title chapter
+  public function getLastComments()
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('SELECT com.chapter_id,com.author, com.comment, DATE_FORMAT(com.comment_date,\'%d/%m/%Y\') AS comment_date_fr, chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC LIMIT 0,5 ');
+    $req -> execute();
+    return $req;
+  }
+  //Return all comments of a chapter
   public function getComments($chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
+    $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
     $req->execute(array($chapterId));
 
     return $req;
@@ -21,6 +31,7 @@ class CommentManager extends DbManager {
     $affectedLines = $req->execute(array($chapterId, $author, $comment));
     return $affectedLines;
   }
+
 
 
 

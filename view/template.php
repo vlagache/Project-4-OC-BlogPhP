@@ -23,10 +23,8 @@
     </body>
 
     <footer>
-        <div class="contact">
+        <div class="footer">
           Contact / Reseaux sociaux / Copyright
-        </div>
-        <div class="admin">
           Zone admin
         </div>
     </footer>

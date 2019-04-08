@@ -9,9 +9,14 @@ require_once(MODEL.'CommentManager.php');
 class Front{
     public function listChapters($params){
       $chapterManager = new ChapterManager();
+      $commentManager = new CommentManager();
 
 
       $chapters = $chapterManager->getChapters();
+      $comments = $commentManager->getLastComments();
+
+
+
       require('view/home.php');
     }
     public function chapter($params){
@@ -23,7 +28,7 @@ class Front{
 
         $chapter = $chapterManager->getChapter($params->getParams('id'));
         $comments = $commentManager->getComments($params->getParams('id'));
-
+      
         require('view/chapterView.php');
       } else {
         throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
@@ -31,14 +36,26 @@ class Front{
     }
     public function addComment($params){
 
-      $commentManager = new CommentManager();
-      $affectedLines = $commentManager ->postComment($params->getParams('id'), $params->getParams('author'), $params->getParams('comment'));
+      if (!null == $params->getParams('id') && $params->getParams('id') > 0 )
+      {
+        if(!null == $params->getParams('author') && !null == $params->getParams('comment'))
+        {
+          $commentManager = new CommentManager();
+          $affectedLines = $commentManager ->postComment($params->getParams('id'), $params->getParams('author'), $params->getParams('comment'));
 
-      if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+          if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+          }
+          else {
+              header('Location: index.php?action=chapter&id=' . $params->getParams('id'));
+          }
+
+        } else {
+          throw new Exception('Tous les champs ne sont pas remplis !');
+        }
+      } else {
+        throw new Exception ('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
       }
-      else {
-          header('Location: index.php?action=chapter&id=' . $params->getParams('id'));
-      }
+
     }
 }

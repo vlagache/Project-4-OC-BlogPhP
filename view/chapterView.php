@@ -2,7 +2,9 @@
 
 <?php ob_start(); ?>
 <div id="contentChapter">
-  <h2 id="chapterViewTitle"><?= htmlspecialchars($chapter['title']) ?></h2>
+  <h2 id="chapterViewTitle">
+    <?= htmlspecialchars($chapter['title']) ?>
+  </h2>
   <p>
     <?= nl2br(htmlspecialchars($chapter['content'])) ?>
   </p>
@@ -16,31 +18,35 @@
 
 <h2 id="commentTitle">Commentaires</h2>
 <div id="contentComment">
-  <?php
-  while ($data = $comments->fetch())
-  {
-   ?>
-   <p><strong><?= htmlspecialchars($data['author']) ?></strong> le <?= $data['comment_date_fr'] ?></p>
-   <p><?= nl2br(htmlspecialchars($data['comment'])) ?></p>
-   <?php
-  }
-  ?>
+  <div id="blabla">
+    <?php while ($data = $comments->fetch()): ;?>
+      <div class="commentChapter">
+         <p>
+           <strong><?= htmlspecialchars($data['author']) ?></strong>
+           le <?= $data['comment_date_fr'] ?>
+         </p>
+         <p>
+           <?= nl2br(htmlspecialchars($data['comment'])) ?>
+         </p>
+       </div>
+    <?php endwhile ?>
+  </div>
 </div>
 
 <h2 id="postCommentTitle">Ecrire un commentaire</h2>
-  <form action="index.php?action=addComment&amp;id=<?= $chapter['id'] ?>" method="post">
-      <div>
-          <label for="author">Auteur</label><br />
-          <input type="text" id="author" name="author" value="   Votre nom " />
-      </div>
-      <div>
-          <label for="comment">Commentaire</label><br />
-          <textarea id="comment" name="comment" > Ecrire votre commentaire ici ! </textarea>
-      </div>
-      <div>
-          <input type="submit" id="submit" />
-      </div>
-  </form>
+<form action="index.php?action=addComment&amp;id=<?= $chapter['id'] ?>" method="post">
+    <div>
+        <label for="author">Auteur</label><br />
+        <input type="text" id="author" name="author" value="   Votre nom " />
+    </div>
+    <div>
+        <label for="comment">Commentaire</label><br />
+        <textarea id="comment" name="comment" > Ecrire votre commentaire ici ! </textarea>
+    </div>
+    <div>
+        <input type="submit" id="submit" />
+    </div>
+</form>
 
 <div class="returnHome">
   <a href="index.php?action=listChapters"> Retour à la page principale </a>
