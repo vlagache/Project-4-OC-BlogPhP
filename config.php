@@ -1,4 +1,5 @@
 <?php
+session_start();
 /** configuration **/
 $root = $_SERVER['DOCUMENT_ROOT']; // D:/wamp64/www
 $host = $_SERVER['HTTP_HOST']; // localhost

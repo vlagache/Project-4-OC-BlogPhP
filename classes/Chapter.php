@@ -4,16 +4,21 @@ class Chapter
   private $id;
   private $title;
   private $content;
-  private $creation_date_fr;
+  private $creation_date;
+  
 
   public function hydrate(array $datas)
   {
     foreach ($datas as $key => $value)
     {
-      $method = 'set'.ucfirst($key);
+      $elements = explode('_', $key); // Ex : creation_date => creation & date
+      $method = 'set';
+      foreach($elements as $e) {
+        $method .= ucfirst($e); // setCreationDate
+      }
       if(method_exists($this, $method))
       {
-        $this->$method($value);
+        $this->$method($value); // setCreationDate($date);
       }
     }
   }
@@ -22,32 +27,47 @@ class Chapter
   {
     return $this->id;
   }
-  public function getTitle()
+  public function getNextId()
   {
-    return $this->title;
+    $this->setId($this->id + 1);
+    return $this->getId();
   }
-  public function getContent()
+  public function getPreviousId()
   {
-    return $this->content;
-  }
-  public function getCreation_date_fr()
-  {
-    return $this->creation_date_fr;
+    $this->setId($this->id - 1);
+    return $this->getId();
   }
   public function setId($id)
   {
     $this->id = $id;
   }
+  public function getTitle()
+  {
+    return $this->title;
+  }
   public function setTitle($title)
   {
-    $this->title = $title;
+    $this->title = htmlspecialchars($title);
+  }
+  public function getContent()
+  {
+    return $this->content;
   }
   public function setContent($content)
   {
-    $this->content = $content;
+    $this->content = nl2br(htmlspecialchars($content));
   }
-  public function setCreation_date_fr($creation_date_fr)
+  public function getCreationDate()
   {
-    $this->creation_date_fr = $creation_date_fr;
+    return $this->creation_date;
+  }
+  public function setCreationDate($creation_date)
+  {
+    $date = new DateTime($creation_date);
+    $this->creation_date = $date;
+  }
+  public function getResumeContent($param = 300) {
+    $this->setContent(substr($this->content,0,$param));
+    return $this->getContent();
   }
 }

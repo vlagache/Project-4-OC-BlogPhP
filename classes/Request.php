@@ -1,7 +1,7 @@
 <?php
 /*
 Class Request
-stores & return $_GET , $_POST , $_COOKIE ( = $_REQUEST)
+stores & return $_GET , $_POST , $_COOKIE ( = $_REQUEST) []
 
 */
 

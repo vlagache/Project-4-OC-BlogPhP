@@ -12,7 +12,10 @@ class Routeur
     private $routes = [
                           'chapter'      => array('controller' => 'Front', 'method' =>'chapter'),
                           'listChapters' => array('controller' => 'Front', 'method' => 'listChapters'),
-                          'addComment'   => array('controller' => 'Front', 'method' => 'addComment')
+                          'addComment'   => array('controller' => 'Front', 'method' => 'addComment'),
+                          'adminAuth'    => array('controller' => 'Front', 'method' => 'adminAuth'),
+                          'adminArea'    => array('controller' => 'Front', 'method' => 'adminArea')
+
                           // ajouter les routes
                       ];
     private $params = array();

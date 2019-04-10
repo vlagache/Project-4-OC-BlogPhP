@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +7,7 @@
         <link href="<?= ASSETS;?>css/style.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
 
     <header>
@@ -24,8 +26,12 @@
 
     <footer>
         <div class="footer">
-          Contact / Reseaux sociaux / Copyright
-          Zone admin
+          <div class="adminArea">
+            <i class="lock fas fa-unlock-alt"></i>
+            <div class="adminText">
+              <a href="index.php?action=adminAuth"> Administration </a>
+            </div>
+          </div>
         </div>
     </footer>
 </html>

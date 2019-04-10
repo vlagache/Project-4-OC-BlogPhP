@@ -8,20 +8,20 @@ while ($articles = $variable envoyé par le modele ->fetch())
 <?php ob_start(); ?>
 
 <div id="chapters">
-  <?php while ($data = $chapters->fetch()): ;?>
-      <?php $titles[$data['id']] = htmlspecialchars($data['title']);  ?>
+  <?php foreach($chapters as $chapter):?>
+      <?php $titles[$chapter->getId()] = ($chapter->getTitle());  ?>
       <div class="chapter">
           <h2>
-            <?= htmlspecialchars($data['title']) ?>
-            <em> publié le <?= $data['creation_date_fr'] ?></em>
+            <?= $chapter->getTitle() ?>
+            <em> publié le <?= $chapter->getCreationDate()->format('d/m/Y') ?></em>
           </h2>
           <p>
-            <?= nl2br(htmlspecialchars($data['resume_content'])) ?>
+            <?= $chapter->getResumeContent() ?>
             <br/>
-            <span class="chapter_link"><a href="index.php?action=chapter&amp;id=<?= $data['id']?>"> Lire le chapitre </a></span>
+            <span class="chapter_link"><a href="index.php?action=chapter&amp;id=<?= $chapter->getId() ?>"> Lire le chapitre </a></span>
           </p>
       </div>
-<?php endwhile ?>
+<?php endforeach ?>
 </div>
 <div id="lastChapters">
   <h2> Derniers chapitres publiés </h2>
@@ -29,24 +29,24 @@ while ($articles = $variable envoyé par le modele ->fetch())
     <ul>
       <?php foreach ($titles as $id => $title):?>
           <li><a href="index.php?action=chapter&amp;id=<?= $id?>"><?= $title ?></a></li>
-      <?php endforeach; ?>
+      <?php endforeach ?>
     </ul>
   </div>
 </div>
 <div id="lastComments">
   <h2> Derniers commentaires publiés </h2>
   <div id="listOfLastComments">
-    <?php while($lastComments = $comments->fetch()): ;?>
+    <?php foreach ($comments as $comment): ?>
       <div class="commentHome">
         <p>
-          <strong><?= htmlspecialchars($lastComments['author']) ?></strong>
-          le <?= $lastComments['comment_date_fr'] ?> à propos du <a href="index.php?action=chapter&amp;id=<?= $lastComments['chapter_id']?>"><?= $lastComments['title'] ?></a>
+          <strong><?= $comment->getAuthor() ?></strong>
+          le <?= $comment->getCommentDate()->format('d/m/Y') ?> à propos du <a href="index.php?action=chapter&amp;id=<?= $comment->getChapterId()?>"><?= $comment->getTitle() ?></a>
         </p>
         <p>
-          <?= nl2br(htmlspecialchars($lastComments['comment'])) ?>
+          <?= $comment->getComment() ?>
         </p>
       </div>
-    <?php endwhile ?>
+    <?php endforeach ?>
   </div>
 </div>
 

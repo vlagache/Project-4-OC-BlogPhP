@@ -9,6 +9,15 @@ h2
   font-family: 'Playfair Display', serif;
 }
 body{background: #f4f8fb;}
+a
+{
+  color:black;
+}
+a:hover
+{
+  color : #208aae;
+  font-size: 1.1em;
+}
 /* ============ HOME ============ */
 .image_title_header
 {
@@ -47,7 +56,6 @@ body{background: #f4f8fb;}
   position: relative;
   top: -85px;
   margin:auto;
-  border:3px solid red;
   width: 90%;
   display:flex;
   justify-content: center;
@@ -169,7 +177,7 @@ form,
   height: auto;
 
 }
-#blabla
+#contentBlock
 {
   border:1px solid black;
   box-shadow: 3px 3px 5px grey;
@@ -240,7 +248,60 @@ textarea{font-family: 'Merriweather', serif;}
   font-size: 1.5em;
   text-align: center;
 }
+/* ============ ADMIN AUTH VIEW =========== */
+#formAdmin
+{
+  position:relative;
+  top : -65px;
+  background: white;
+  z-index: 2;
+  border : 1px solid black;
+  width: 55%;
+  padding: 4%;
+  margin: auto;
+  padding: 2%;
+}
+
+#login,
+#password
+{
+
+    margin-top: 25px;
+    margin-left:auto;
+    margin-right: auto;
+    font-family: 'Merriweather', serif;
+    font-size: 1em;
+}
+#adminButton
+{
+    margin-top: 25px;
+    margin-bottom: 25px;;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7em;
+    border-radius: 5%;
+}
+/* ============ ADMIN AREA VIEW =========== */
+#adminArea
+{
+  position:relative;
+  top : -65px;
+  background: white;
+  z-index: 2;
+  border : 1px solid black;
+  width: 55%;
+  padding: 4%;
+  margin: auto;
+  padding: 2%;
+}
+#adminArea p
+{
+  text-align: center;
+  font-size: 2em;
+  width: 100%;
+  margin-bottom: 91px;
+}
 /* ============ ERROR VIEW =========== */
+
 #contentError
 {
   position:relative;
@@ -259,7 +320,6 @@ textarea{font-family: 'Merriweather', serif;}
   width: 100%;
   margin-bottom: 70px;
 }
-
 /* ============ FOOTER =========== */
 footer
 {
@@ -270,8 +330,25 @@ footer
 }
 .footer
 {
+  position: relative;
   height: 100%;
   width: 100%;
   background: linear-gradient(to right, #3f647e, #7ca49c);
-
+}
+.adminArea
+{
+  position:absolute;
+  right:7%;
+  top:30%;
+  display: flex;
+}
+.lock
+{
+  font-size: 2em;
+  color:white;
+}
+.adminText
+{
+ margin-left: 15px;
+ margin-top: 6px;
 }

@@ -10,31 +10,33 @@ class ChapterManager extends DbManager {
   // Renvoie tout les chapitres
   public function getChapters(){
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, SUBSTR(content,1,300) AS resume_content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM chapters ORDER BY creation_date DESC');
+    $req = $db->prepare('SELECT id, title, content, creation_date FROM chapters ORDER BY creation_date DESC');
     $req->execute();
 
-    return $req;
+    $chapters = array();
+    while($data = $req->fetch(PDO::FETCH_ASSOC)) {
+      $chapter = new Chapter();
+      $chapter->hydrate($data);
+      $chapters[] = $chapter;
+    }
+
+    return $chapters;
   }
   // Renvoie un chapitre en fonction de son ID
   public function getChapter($chapterId){
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y \') AS creation_date_fr FROM chapters WHERE id = ?');
+    $req = $db->prepare('SELECT id, title, content, creation_date FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
-    $chapter = $req->fetch();
+    $data = $req->fetch(PDO::FETCH_ASSOC);
 
-
-    // $chapterObj = new Chapter();
-    // $chapterObj->hydrate($chapter);
-    // echo '<pre>'; print_r($chapterObj); exit;
-
-    return $chapter;
+    if (!empty($data) ) // si la requete est bien executé différent de si la requete est vide.
+    {
+      $chapter = new Chapter();
+      $chapter->hydrate($data);
+      return $chapter;
+    } else {
+      throw new Exception('Chapitre inexistant');
+    }
   }
-  // Renvoie le nombre de chapitres
-  public function getCountChapters(){
-    $db=$this->dbConnect();
-    $req = $db->prepare('SELECT COUNT(id) from chapters');
-    $req->execute();
 
-    return $req;
-  }
 }
