@@ -300,6 +300,11 @@ textarea{font-family: 'Merriweather', serif;}
   width: 100%;
   margin-bottom: 91px;
 }
+#logoutForm
+{
+  border: none;
+  box-shadow: none;
+}
 /* ============ ERROR VIEW =========== */
 
 #contentError

@@ -10,12 +10,13 @@ class Routeur
     private $action;
     private $controller;
     private $routes = [
-                          'chapter'      => array('controller' => 'Front', 'method' =>'chapter'),
-                          'listChapters' => array('controller' => 'Front', 'method' => 'listChapters'),
-                          'addComment'   => array('controller' => 'Front', 'method' => 'addComment'),
-                          'adminAuth'    => array('controller' => 'Front', 'method' => 'adminAuth'),
-                          'adminArea'    => array('controller' => 'Front', 'method' => 'adminArea')
-
+                          'chapter'          => array('controller' => 'Front', 'method' =>'chapter'),
+                          'listChapters'     => array('controller' => 'Front', 'method' => 'listChapters'),
+                          'addComment'       => array('controller' => 'Front', 'method' => 'addComment'),
+                          'adminAuth'        => array('controller' => 'Front', 'method' => 'adminAuth'),
+                          'checkPassword'    => array('controller' => 'Front', 'method' => 'checkPassword'),
+                          'adminArea'        => array('controller' => 'Front', 'method' => 'adminArea'),
+                          'logout'           => array('controller' => 'Front', 'method' => 'logout')
                           // ajouter les routes
                       ];
     private $params = array();

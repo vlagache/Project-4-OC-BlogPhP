@@ -7,6 +7,7 @@ while ($articles = $variable envoyé par le modele ->fetch())
 
 <?php ob_start(); ?>
 
+
 <div id="chapters">
   <?php foreach($chapters as $chapter):?>
       <?php $titles[$chapter->getId()] = ($chapter->getTitle());  ?>
@@ -49,6 +50,10 @@ while ($articles = $variable envoyé par le modele ->fetch())
     <?php endforeach ?>
   </div>
 </div>
+
+
+
+
 
 
 

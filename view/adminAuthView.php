@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div id="formAdmin">
-    <form  action= "index.php?action=adminArea" method="post">
+    <form  action= "index.php?action=checkPassword" method="post">
       <div>
           <label for="login">Votre identifiant</label><br />
           <input type="text" id="login" name="login"  />

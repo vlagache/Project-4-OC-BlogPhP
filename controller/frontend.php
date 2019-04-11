@@ -1,6 +1,9 @@
 <!-- Controlleur qui appelle le modele.
 require les fichiers du modele.
 function qui vont etre appellé dans le routeur pour afficher tel ou tel page.-->
+
+
+
 <?php
 
 require_once(MODEL.'ChapterManager.php');
@@ -61,17 +64,23 @@ class Front{
 
     }
     public function adminAuth($params){
-      require ('view/adminAuthView.php');
+      if (isset($_SESSION['user']))
+      {
+        require ('view/adminAreaView.php');
+      } else {
+        require ('view/adminAuthView.php');
+      }
+
     }
-    public function adminArea($params){ //Ne require pas une vue , juste en arriere plan puis header Location blabla
+    public function checkPassword($params){ //Ne require pas une vue , juste en arriere plan puis header Location blabla
       if (!null == $params->getParams('password') && !null == $params->getParams('login'))
       {
         $adminManager = new AdminManager();
         $admin = $adminManager->getAdmin($params->getParams('login'));
         if (password_verify($params->getParams('password'),$admin['password']))
         {
-          $_SESSION['user'] = 'admin';
-          $test = $_SESSION['user'];
+          $_SESSION['user'] = $admin['login'];
+          header('Location: index.php?action=adminArea');
         } else {
           throw new Exception('Mauvais mot de passe ');
         }
@@ -80,11 +89,27 @@ class Front{
       throw new Exception ('Login ou Mot de passe non saisi');
       }
 
-
       //
       // Si il existe un $_SESSION['xxx'] alors =>
       // on va la zone admin header(location : blabla)
       // Sinon message d'erreur
-      require ('view/adminAreaView.php');
+    }
+    public function adminArea($params){
+      if (isset($_SESSION['user']))
+      {
+        require ('view/adminAreaView.php');
+      } else {
+        throw new Exception('Accés non autorisé');
+      }
+    }
+    public function logout($params){
+      // Suppression des variables de session et de la session
+      $_SESSION = array();
+      session_destroy();
+
+      // Suppression des cookies de connexion automatique
+      setcookie('login', '');
+      setcookie('password', '');
+      header('Location: index.php');
     }
 }
