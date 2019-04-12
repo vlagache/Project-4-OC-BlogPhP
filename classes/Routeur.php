@@ -24,7 +24,7 @@ class Routeur
     public function __construct($action)
     {
         $this->action = $action;
-        $this->params = new Request();
+        $this->params = new Request($this->action);
     }
 
     public function renderController()
@@ -44,6 +44,9 @@ class Routeur
               throw new Exception('Page inexistante');
             }
           } catch(Exception $e) {
+            // $myController = new Front();
+            // $viewActive = $myController -> menuActive($this->params);
+            $viewActive = '';
             $errorMessage = $e->getMessage();
             require('view/errorView.php');
           }

@@ -11,13 +11,45 @@
     </head>
 
     <header>
+      <div class="menu">
+        <nav class="menuNav">
+          <ul>
+            <li <?php if ($viewActive == 'listChapters'): ?>class="selected"<?php endif ?>>
+              <a href="index.php">Accueil</a>
+            </li>
+            <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
+              <a href="index.php?action=chapter&id=6">Lecture</a>
+            </li>
+            <li <?php if ($viewActive == 'author'):?>class="selected"<?php endif ?> >
+              <a href="index.php?action=author">A propos</a>
+            </li>
+            <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
+              <a href="index.php?action=adminAuth">Administration</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="adminHeader">
+          <div class="adminCo">
+            <?php if(isset($_SESSION['admin'])):?>
+              <form action="index.php?action=logout" method="post" class="logoutForm">
+                  <button type="submit" class="submitDeco"><i class=" iconeLogout fas fa-power-off"></i></button>
+              </form>
+              <p>
+                Connecté en tant que <?= $_SESSION['admin']; ?>
+              </p>
+            <?php endif ?>
+          </div>
+        </div>
+
+      </div>
+
       <div class="image_title_header">
         <img src="<?= ASSETS;?>images/road-alaska-header.jpg" alt="Photo d'une route en Alaska" class="imgHeader" />
         <div class="textHeader">
           <h1 class="titleMain"> Billet simple pour l'Alaska</h1>
           <span class="introduction"> La publication épisodique du nouveau livre de Jean Forteroche </span>
         </div>
-      </div>
     </header>
 
     <body>
@@ -25,13 +57,9 @@
     </body>
 
     <footer>
-        <div class="footer">
-          <div class="adminArea">
-            <i class="lock fas fa-unlock-alt"></i>
-            <div class="adminText">
-              <a href="index.php?action=adminAuth"> Administration </a>
-            </div>
-          </div>
-        </div>
+
     </footer>
 </html>
+
+<!-- <div class="<?= $adminLog['adminCo'] ?>"> -->
+<!-- <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?> -->

@@ -5,13 +5,8 @@
 <div id="adminArea">
  <p>
    Bienvenue dans la zone d'administration</br>
-   <?= $_SESSION['user'] ?>
+   <?= $_SESSION['admin'] ?>
  </p>
- <form action="index.php?action=logout" method="post" id="logoutForm">
-   <div>
-     <input type="submit" id="submit" value="Déconnexion"  />
-   </div>
- </form>
 </div>
 
 <div class="returnHome">

@@ -15,7 +15,4 @@ class AdminManager extends DbManager
     return $admin;
 
   }
-
-
-
 }
