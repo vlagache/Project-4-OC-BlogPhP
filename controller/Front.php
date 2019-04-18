@@ -1,56 +1,27 @@
-<!-- Controlleur qui appelle le modele.
-require les fichiers du modele.
-function qui vont etre appellé dans le routeur pour afficher tel ou tel page.-->
-
-
-
 <?php
+class Front {
+    private $viewActive;
 
-require_once(MODEL.'ChapterManager.php');
-require_once(MODEL.'CommentManager.php');
-require_once(MODEL.'AdminManager.php');
 
-class Front{
-  // Affiche ou cache en fonction de l'existence de $_SESSION['admin'];
-    public function adminLog($params){
-      $admin = array();
+    public function __construct($params)
+    {
 
-      if(isset($_SESSION['admin'])){
-        $admin =  [
-                      'adminCo' => 'div-show',
-                      'adminDeco' => 'div-hide'
-                  ];
-      } else {
-        $admin =  [
-                      'adminCo' => 'div-hide',
-                      'adminDeco' => 'div-show'
-                  ];
-      }
-      return $admin;
+      $this->viewActive = $params->getAction();
     }
-
-    // Renvoie la vue active
-    public function menuActive($params){
-      $viewActive = $params->getAction();
-      return $viewActive;
-    }
-
+    // Tout les chapitres
     public function listChapters($params){
       $chapterManager = new ChapterManager();
       $commentManager = new CommentManager();
 
-      $adminLog = $this->adminLog($params);
-      $viewActive = $this->menuActive($params);
-
       $chapters = $chapterManager->getChapters();
       $comments = $commentManager->getLastComments();
 
-      require('view/home.php');
+      $title = 'Billet simple pour l\'Alaska par Jean Forteroche';
+      $myView = new View('home');
+      $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $this->viewActive));
+
     }
     public function chapter($params){
-
-      $adminLog = $this->adminLog($params);
-      $viewActive = $this->menuActive($params);
 
       if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
       {
@@ -59,15 +30,16 @@ class Front{
 
 
         $chapter = $chapterManager->getChapter($params->getParam('id'));
-
-
         $comments = $commentManager->getComments($params->getParam('id'));
 
-        require('view/chapterView.php');
+        $title = $chapter->getTitle();
+        $myView = new View('chapterView');
+        $myView->render(array('chapter' => $chapter, 'comments' => $comments, 'title' => $title, 'viewActive' => $this->viewActive));
       } else {
         throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
       }
     }
+
     public function addComment($params){
       if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
       {
@@ -92,17 +64,26 @@ class Front{
 
     }
     public function adminAuth($params){
-      $adminLog = $this->adminLog($params);
-      $viewActive = $this->menuActive($params);
+
+      $viewActive = $this->viewActive;
+
+      $chapterManager = new ChapterManager();
+      $chapters = $chapterManager->getChapters();
 
       if (isset($_SESSION['admin']))
       {
-        require ('view/adminAreaView.php');
+        $title = 'Zone Administration';
+        $myView = new View('adminAreaView');
+        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $viewActive));
       } else {
-        require ('view/adminAuthView.php');
+        $title = 'Zone Login Administration';
+        $myView = new View('adminAuthView');
+        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
+
       }
 
     }
+
     public function checkPassword($params){
       if (!null == $params->getParam('password') && !null == $params->getParam('login'))
       {
@@ -120,16 +101,31 @@ class Front{
       throw new Exception ('Login ou Mot de passe non saisi');
       }
     }
+
     public function adminArea($params){
-      $adminLog = $this->adminLog($params);
-      $viewActive = $this->menuActive($params);
-      
+
+      $chapterManager = new ChapterManager();
+      $chapters = $chapterManager->getChapters();
+      if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
+      {
+          $chapterEdit = $chapterManager->getChapter($params->getParam('id'));
+      }
+
+
+      $viewActive = $this->viewActive;
+
+
       if (isset($_SESSION['admin']))
       {
-        require ('view/adminAreaView.php');
+          $title = 'Zone Administration';
+          $myView = new View('adminAreaView');
+          $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $viewActive));
+
       } else {
         throw new Exception('Accés non autorisé');
       }
+
+
     }
     public function logout($params){
       // Suppression des variables de session et de la session
@@ -142,3 +138,23 @@ class Front{
       header('Location: index.php');
     }
 }
+
+
+//
+// // Affiche ou cache en fonction de l'existence de $_SESSION['admin'];
+//   public function adminLog($params){
+//     $admin = array();
+//
+//     if(isset($_SESSION['admin'])){
+//       $admin =  [
+//                     'adminCo' => 'div-show',
+//                     'adminDeco' => 'div-hide'
+//                 ];
+//     } else {
+//       $admin =  [
+//                     'adminCo' => 'div-hide',
+//                     'adminDeco' => 'div-show'
+//                 ];
+//     }
+//     return $admin;
+//   }

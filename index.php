@@ -2,7 +2,11 @@
 <?php
 
 require_once('config.php');
-require('classes/Routeur.php');
+
+MyAutoload::start();
+// require('classes/Routeur.php');
+
+
 
 
 if(isset($_GET['action'])){

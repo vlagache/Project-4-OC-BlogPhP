@@ -8,6 +8,15 @@
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+        tinymce.init({
+          selector: '#tinyMce',
+          language: 'fr_FR'
+        });
+        </script>
+
     </head>
 
     <header>
@@ -17,11 +26,11 @@
             <li <?php if ($viewActive == 'listChapters'): ?>class="selected"<?php endif ?>>
               <a href="index.php">Accueil</a>
             </li>
-            <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
-              <a href="index.php?action=chapter&id=6">Lecture</a>
-            </li>
             <li <?php if ($viewActive == 'author'):?>class="selected"<?php endif ?> >
               <a href="index.php?action=author">A propos</a>
+            </li>
+            <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
+              <a href="index.php?action=chapter&id=1">Lecture</a>
             </li>
             <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
               <a href="index.php?action=adminAuth">Administration</a>
@@ -60,6 +69,3 @@
 
     </footer>
 </html>
-
-<!-- <div class="<?= $adminLog['adminCo'] ?>"> -->
-<!-- <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?> -->

@@ -1,13 +1,3 @@
-<!--
-Affichage
-while ($articles = $variable envoyé par le modele ->fetch())
-
--->
-<?php $title = 'Billet simple pour l\'Alaska par Jean Forteroche';?>
-
-<?php ob_start(); ?>
-
-
 <div id="chapters">
   <?php foreach($chapters as $chapter):?>
       <?php $titles[$chapter->getId()] = ($chapter->getTitle());  ?>
@@ -50,13 +40,3 @@ while ($articles = $variable envoyé par le modele ->fetch())
     <?php endforeach ?>
   </div>
 </div>
-
-
-
-
-
-
-
-
-<?php $content = ob_get_clean(); ?>
-<?php require(VIEW.'template.php');?>

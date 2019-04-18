@@ -1,7 +1,3 @@
-<?php $title = 'Zone Login Administration' ?>
-
-<?php ob_start(); ?>
-
 <div id="formAdmin">
     <form  action= "index.php?action=checkPassword" method="post">
       <div>
@@ -21,6 +17,3 @@
 <div class="returnHome">
   <a href="index.php?action=listChapters"> Retour à la page principale </a>
 </div>
-
-<?php $content = ob_get_clean(); ?>
-<?php require(VIEW.'template.php');?>

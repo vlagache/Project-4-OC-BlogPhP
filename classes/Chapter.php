@@ -5,7 +5,7 @@ class Chapter
   private $title;
   private $content;
   private $creation_date;
-  
+
 
   public function hydrate(array $datas)
   {
@@ -29,13 +29,15 @@ class Chapter
   }
   public function getNextId()
   {
-    $this->setId($this->id + 1);
-    return $this->getId();
+    $id  = $this->id;
+    $id++;
+    return $id;
   }
   public function getPreviousId()
   {
-    $this->setId($this->id - 1);
-    return $this->getId();
+    $id  = $this->id;
+    $id--;
+    return $id;
   }
   public function setId($id)
   {

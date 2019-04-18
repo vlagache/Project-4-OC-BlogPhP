@@ -115,7 +115,7 @@ a:hover
   border: none;
   box-shadow: none;
   background-color: rgb(244,248,251,1);
-
+  outline-style:none;
 }
 .iconeLogout
 {
@@ -363,17 +363,18 @@ textarea{font-family: 'Merriweather', serif;}
   background: white;
   z-index: 2;
   border : 1px solid black;
-  width: 55%;
+  width: 80%;
   padding: 4%;
   margin: auto;
   padding: 2%;
 }
-#adminArea p
+#adminArea form
 {
-  text-align: center;
-  font-size: 2em;
-  width: 100%;
-  margin-bottom: 91px;
+  width: 80%;
+}
+#adminArea textarea
+{
+    height: 400px;
 }
 
 
