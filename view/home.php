@@ -27,16 +27,18 @@
 <div id="lastComments">
   <h2> Derniers commentaires publiés </h2>
   <div id="listOfLastComments">
-    <?php foreach ($comments as $comment): ?>
-      <div class="commentHome">
-        <p>
-          <strong><?= $comment->getAuthor() ?></strong>
-          le <?= $comment->getCommentDate()->format('d/m/Y') ?> à propos du <a href="index.php?action=chapter&amp;id=<?= $comment->getChapterId()?>"><?= $comment->getTitle() ?></a>
-        </p>
-        <p>
-          <?= $comment->getComment() ?>
-        </p>
-      </div>
+    <?php foreach ($comments as $key => $comment): ?>
+      <?php if ($key<=4): ?>
+        <div class="commentHome">
+            <p>
+              <strong><?= $comment->getAuthor() ?></strong>
+              le <?= $comment->getCommentDate()->format('d/m/Y') ?> à propos du <a href="index.php?action=chapter&amp;id=<?= $comment->getChapterId()?>"><?= $comment->getTitle() ?></a>
+            </p>
+            <p>
+              <?= $comment->getComment() ?>
+            </p>
+        </div>
+      <?php endif ?>
     <?php endforeach ?>
   </div>
 </div>

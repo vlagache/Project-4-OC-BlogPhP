@@ -16,7 +16,6 @@ a
 a:hover
 {
   color : #208aae;
-  font-size: 1.1em;
 }
 .div-hide{display:none;}
 .div-show{display:block;}
@@ -363,18 +362,33 @@ textarea{font-family: 'Merriweather', serif;}
   background: white;
   z-index: 2;
   border : 1px solid black;
-  width: 80%;
+  width: 60%;
   padding: 4%;
   margin: auto;
   padding: 2%;
 }
-#adminArea form
+#welcomeAdmin
 {
-  width: 80%;
+  text-align: center;
+  font-size: 1.5em;
 }
-#adminArea textarea
+#newChapter
 {
-    height: 400px;
+  border: 2px solid red;
+  width: 75%;
+  margin:25px auto 25px auto;
+}
+#chaptersAdmin
+{
+  border: 2px solid red;
+  width: 75%;
+  margin:25px auto 25px auto;
+}
+#commentsAdmin
+{
+  border: 2px solid red;
+  width: 90%;
+  margin:25px auto 25px auto;
 }
 
 

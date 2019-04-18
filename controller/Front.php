@@ -68,17 +68,20 @@ class Front {
       $viewActive = $this->viewActive;
 
       $chapterManager = new ChapterManager();
+      $commentManager = new CommentManager();
+
       $chapters = $chapterManager->getChapters();
+      $comments = $commentManager->getLastComments();
 
       if (isset($_SESSION['admin']))
       {
         $title = 'Zone Administration';
         $myView = new View('adminAreaView');
-        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $viewActive));
+        $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive));
       } else {
         $title = 'Zone Login Administration';
         $myView = new View('adminAuthView');
-        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
+        $myView->render(array('title' => $title, 'viewActive' => $this->viewActive));
 
       }
 
@@ -105,12 +108,10 @@ class Front {
     public function adminArea($params){
 
       $chapterManager = new ChapterManager();
-      $chapters = $chapterManager->getChapters();
-      if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
-      {
-          $chapterEdit = $chapterManager->getChapter($params->getParam('id'));
-      }
+      $commentManager = new CommentManager();
 
+      $chapters = $chapterManager->getChapters();
+      $comments = $commentManager->getLastComments();
 
       $viewActive = $this->viewActive;
 
@@ -119,7 +120,7 @@ class Front {
       {
           $title = 'Zone Administration';
           $myView = new View('adminAreaView');
-          $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $viewActive));
+          $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive));
 
       } else {
         throw new Exception('Accés non autorisé');

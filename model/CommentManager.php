@@ -6,11 +6,12 @@ require_once('classes/Comment.php');
 
 class CommentManager extends DbManager {
 
+
   // Return 5 last comments
   public function getLastComments()
   {
     $db = $this->dbConnect();
-    $req = $db->prepare('SELECT com.chapter_id,com.author, com.comment, com.comment_date,chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC LIMIT 0,5 ');
+    $req = $db->prepare('SELECT com.chapter_id,com.author, com.comment, com.comment_date,chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC ');
     $req -> execute();
 
     $comments = array();
@@ -21,11 +22,10 @@ class CommentManager extends DbManager {
       $comment->hydrate($data);
       $comment->setTitle($data['title']);
 
-
       $comments[] = $comment;
 
     }
-    
+
     return $comments;
   }
   //Return all comments of a chapter
