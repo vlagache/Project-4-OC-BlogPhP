@@ -155,11 +155,12 @@ a:hover
 {
 
   text-align: justify;
-  padding: 5%;
+  padding: 2%;
 }
 .chapter_link
 {
   position:absolute;
+  bottom: 4%;
   right: 5%;
 }
 #lastChapters,
@@ -362,36 +363,152 @@ textarea{font-family: 'Merriweather', serif;}
   background: white;
   z-index: 2;
   border : 1px solid black;
-  width: 60%;
+  width: 80%;
   padding: 4%;
   margin: auto;
   padding: 2%;
 }
 #welcomeAdmin
 {
+  width: 100%;
   text-align: center;
   font-size: 1.5em;
+  padding-bottom: 1%;
+  border-bottom: 1px dashed black;
 }
+.titleAdminArea
+{
+  text-align: center;
+  font-size: 1.4em;
+  margin: 35px 0px 35px 0px;
+}
+#editMsg
+{
+  border: 2px dashed red;
+  width: 75%;
+  margin:25px auto 25px auto;
+}
+#writeNewChapter
+{
+  text-align: center;
+  font-size: 1.4em;
+  margin:25px auto 25px auto;
+}
+#tableChapter
+{
+  width: 65%;
+  border:1px solid black;
+  box-shadow: 3px 3px 5px grey;
+  margin:25px auto 25px auto;
+  border-collapse:collapse
+}
+#tableChapter #title,
+#tableComment #title
+{
+  background-color:#f4f8fb;
+}
+#tableChapter th,
+#tableComment th
+{
+  vertical-align:middle;
+  border-bottom:1px solid black;
+  padding:1%;
+}
+#tableChapter td,
+#tableComment td
+{
+  vertical-align:middle;
+  padding: 1%;
+}
+#tableComment
+{
+  width: 85%;
+  border:1px solid black;
+  box-shadow: 3px 3px 5px grey;
+  margin:25px auto 25px auto;
+  border-collapse:collapse
+}
+#nbReportCom
+{
+  font-size: 1.1em;
+  font-style: italic;
+  text-align: center;
+  color: red;
+}
+.report
+{
+  color:red;
+  font-weight: bold;
+}
+
+/* ============ EDIT CHAPTER VIEW =========== */
+
+#editChapter
+{
+  position:relative;
+  top : -65px;
+  background: white;
+  z-index: 2;
+  border : 1px solid black;
+  width: 60%;
+  padding: 4%;
+  margin: auto;
+  padding: 2%;
+}
+#editChapter form { width: 80%;}
+#editChapter #titleChapter
+{
+  width: 80%;
+  text-align: center;
+  vertical-align: center;
+  margin: 25px 0px 15px 0px;
+  font-size: 1.3em;
+}
+#editChapter #tinyMce{height: 800px;}
+#welcomeEdit
+{
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 40px;
+}
+#editChapter form submit
+{
+  justify-content: center;
+}
+/* ============ NEW CHAPTER VIEW =========== */
+
 #newChapter
 {
-  border: 2px solid red;
-  width: 75%;
-  margin:25px auto 25px auto;
+  position:relative;
+  top : -65px;
+  background: white;
+  z-index: 2;
+  border : 1px solid black;
+  width: 60%;
+  padding: 4%;
+  margin: auto;
+  padding: 2%;
 }
-#chaptersAdmin
+#newChapter form { width: 80%;}
+#newChapter #titleChapter
 {
-  border: 2px solid red;
-  width: 75%;
-  margin:25px auto 25px auto;
+  width: 80%;
+  text-align: center;
+  vertical-align: center;
+  margin: 25px 0px 15px 0px;
+  font-size: 1.3em;
 }
-#commentsAdmin
+#newChapter #tinyMce{height: 800px;}
+#welcomeNew
 {
-  border: 2px solid red;
-  width: 90%;
-  margin:25px auto 25px auto;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 40px;
 }
-
-
+#newChapter form submit
+{
+  justify-content: center;
+}
 /* ============ ERROR VIEW =========== */
 
 #contentError

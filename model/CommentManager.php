@@ -11,7 +11,7 @@ class CommentManager extends DbManager {
   public function getLastComments()
   {
     $db = $this->dbConnect();
-    $req = $db->prepare('SELECT com.chapter_id,com.author, com.comment, com.comment_date,chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC ');
+    $req = $db->prepare('SELECT com.chapter_id,com.author, com.comment, com.comment_date, com.report_com,chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC ');
     $req -> execute();
 
     $comments = array();
@@ -52,11 +52,15 @@ class CommentManager extends DbManager {
     return $affectedLines;
   }
 
+  public function nbReportCom()
+  {
+    $db=$this->dbConnect();
+    $req = $db->prepare('  SELECT COUNT(*) AS nbReportCom FROM comments WHERE report_com = 1');
+    $req->execute();
+    $nbReportCom = $req->fetch(PDO::FETCH_ASSOC);
+    return $nbReportCom;
 
-
-
-
-
+  }
 
 
 }

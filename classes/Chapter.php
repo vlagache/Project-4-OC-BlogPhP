@@ -2,9 +2,12 @@
 class Chapter
 {
   private $id;
+  // private $next_id;
+  // private $previous_id;
   private $title;
   private $content;
   private $creation_date;
+  private $edit_date;
 
 
   public function hydrate(array $datas)
@@ -12,6 +15,7 @@ class Chapter
     foreach ($datas as $key => $value)
     {
       $elements = explode('_', $key); // Ex : creation_date => creation & date
+
       $method = 'set';
       foreach($elements as $e) {
         $method .= ucfirst($e); // setCreationDate
@@ -49,7 +53,7 @@ class Chapter
   }
   public function setTitle($title)
   {
-    $this->title = htmlspecialchars($title);
+    $this->title = $title;
   }
   public function getContent()
   {
@@ -57,7 +61,7 @@ class Chapter
   }
   public function setContent($content)
   {
-    $this->content = nl2br(htmlspecialchars($content));
+    $this->content = $content;
   }
   public function getCreationDate()
   {
@@ -67,6 +71,15 @@ class Chapter
   {
     $date = new DateTime($creation_date);
     $this->creation_date = $date;
+  }
+  public function getEditDate()
+  {
+    return $this->edit_date;
+  }
+  public function setEditDate($edit_date)
+  {
+    $date = new DateTime($edit_date);
+    $this->edit_date = $date;
   }
   public function getResumeContent($param = 300) {
     $this->setContent(substr($this->content,0,$param));

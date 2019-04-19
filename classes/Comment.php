@@ -7,6 +7,7 @@ class comment
   private $comment;
   private $comment_date;
   private $chapter_name;
+  private $report_com;
 
 
   public function hydrate(array $datas)
@@ -73,5 +74,13 @@ class comment
   public function setTitle($chapter_name)
   {
     $this->chapter_name = $chapter_name;
+  }
+  public function getReportCom()
+  {
+    return $this->report_com;
+  }
+  public function setReportCom($report_com)
+  {
+    $this->report_com = $report_com;
   }
 }

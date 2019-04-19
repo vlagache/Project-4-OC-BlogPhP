@@ -14,7 +14,14 @@ class Routeur
                           'adminAuth'        => array('controller' => 'Front', 'method' => 'adminAuth'),
                           'checkPassword'    => array('controller' => 'Front', 'method' => 'checkPassword'),
                           'adminArea'        => array('controller' => 'Front', 'method' => 'adminArea'),
-                          'logout'           => array('controller' => 'Front', 'method' => 'logout')
+                          'logout'           => array('controller' => 'Front', 'method' => 'logout'),
+                          'editChapter'      => array('controller' => 'Front', 'method' => 'editChapter'),
+                          'sendEditChapter'  => array('controller' => 'Front', 'method' => 'sendEditChapter'),
+                          'newChapter'       => array('controller' => 'Front', 'method' => 'newChapter'),
+                          'sendNewChapter'   => array('controller' => 'Front', 'method' => 'sendNewChapter'),
+                          'deleteChapter'    => array('controller' => 'Front', 'method' => 'deleteChapter')
+
+
                           // ajouter les routes
                       ];
     private $params = array();

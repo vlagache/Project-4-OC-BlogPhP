@@ -73,11 +73,14 @@ class Front {
       $chapters = $chapterManager->getChapters();
       $comments = $commentManager->getLastComments();
 
+      $nbReportCom = $commentManager->nbReportCom();
+      extract($nbReportCom);
+
       if (isset($_SESSION['admin']))
       {
         $title = 'Zone Administration';
         $myView = new View('adminAreaView');
-        $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive));
+        $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive, "nbReportCom" => $nbReportCom));
       } else {
         $title = 'Zone Login Administration';
         $myView = new View('adminAuthView');
@@ -113,6 +116,11 @@ class Front {
       $chapters = $chapterManager->getChapters();
       $comments = $commentManager->getLastComments();
 
+      $nbReportCom = $commentManager->nbReportCom();
+      extract($nbReportCom);
+
+
+
       $viewActive = $this->viewActive;
 
 
@@ -120,7 +128,7 @@ class Front {
       {
           $title = 'Zone Administration';
           $myView = new View('adminAreaView');
-          $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive));
+          $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $viewActive, 'nbReportCom' => $nbReportCom));
 
       } else {
         throw new Exception('Accés non autorisé');
@@ -128,7 +136,8 @@ class Front {
 
 
     }
-    public function logout($params){
+    public function logout($params)
+    {
       // Suppression des variables de session et de la session
       $_SESSION = array();
       session_destroy();
@@ -137,6 +146,67 @@ class Front {
       setcookie('login', '');
       setcookie('password', '');
       header('Location: index.php');
+    }
+
+    public function editChapter($params)
+    {
+      if (isset($_SESSION['admin']))
+      {
+        if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
+        {
+          $chapterManager = new ChapterManager();
+
+          $chapter = $chapterManager->getChapter($params->getParam('id'));
+
+
+          $title = 'Edition de : ' . $chapter->getTitle();
+          $myView = new View('editChapterView');
+          $myView->render(array('chapter' => $chapter,'title' => $title, 'viewActive' => $this->viewActive));
+        } else {
+          throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
+        }
+      } else
+      {
+        throw new Exception('Acces non autorisé ');
+      }
+
+    }
+
+    public function sendEditChapter($params)
+    {
+      $chapterManager = new ChapterManager();
+      $chapterManager->updateChapter($params);
+      header('Location: index.php?action=adminArea');
+    }
+    public function newChapter($params)
+    {
+      if (isset($_SESSION['admin']))
+      {
+        $title = ' Création d\'un nouveau chapitre ';
+        $myView = new View('newChapterView');
+        $myView->render(array('title' => $title, 'viewActive' => $this->viewActive));
+      } else
+      {
+        throw new Exception('Acces non autorisé ');
+      }
+    }
+    public function sendNewChapter($params)
+    {
+      $chapterManager = new ChapterManager();
+      $chapterManager->newChapter($params);
+      header('Location: index.php?action=adminArea');
+    }
+    public function deleteChapter($params)
+    {
+      if (isset($_SESSION['admin']))
+      {
+        $chapterManager = new ChapterManager();
+        $chapterManager->deleteChapter($params->getParam('id'));
+        header('Location: index.php?action=adminArea');
+      } else
+      {
+        throw new Exception('Acces non autorisé ');
+      }
     }
 }
 
