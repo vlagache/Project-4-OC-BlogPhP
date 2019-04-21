@@ -13,19 +13,26 @@
   </div>
 </div>
 
+
 <h2 id="commentTitle">Commentaires</h2>
 <div id="contentComment">
   <div id="contentBlock">
     <?php foreach ($comments as $comment): ?>
       <div class="commentChapter">
-         <p>
-           <strong><?= $comment->getAuthor() ?></strong>
-           le <?= $comment->getCommentDate()->format('d/m/Y à Hh:i') ?>
-         </p>
-         <p>
-           <?= $comment->getComment() ?>
-         </p>
-       </div>
+           <p class="authorComment">
+               <strong><?= $comment->getAuthor() ?></strong>
+               le <?= $comment->getCommentDate()->format('d/m/Y à H:i') ?>
+           </p>
+           <p class="commentComment">
+               <?= $comment->getComment() ?>
+           </p>
+           <div class="reportCom">
+               <i class="fas fa-exclamation"></i>
+               <p>
+                 <a href="index.php?action=reportComment&amp;idCom=<?= $comment->getId()?>&amp;id=<?= $comment->getChapterId()?>">Signaler le commentaire </a>
+               </p>
+           </div>
+      </div>
     <?php endforeach ?>
   </div>
 </div>

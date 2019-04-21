@@ -266,15 +266,38 @@ form,
 }
 .commentChapter
 {
-  width: 50%;
-  padding: 1%;
+  width: 60%;
+  text-align: justify;
+  padding: 2%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
   margin-top: 15px;
   border-bottom: 1px dashed black;
-
+  position: relative;
 }
+.authorComment{margin-bottom: 15px;}
+.commentComment{margin-bottom: 20px;}
+.reportCom
+{
+
+  display: flex;
+  color:#208aae;
+  position:absolute;
+  bottom : 1%;
+  left: 3%;
+}
+.reportCom p
+{
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+.reportCom a
+{
+  color:#208aae;
+  text-decoration: none;
+}
+
 form
 {
   text-align: center;
@@ -422,7 +445,7 @@ textarea{font-family: 'Merriweather', serif;}
 }
 #tableComment
 {
-  width: 85%;
+  width: 95%;
   border:1px solid black;
   box-shadow: 3px 3px 5px grey;
   margin:25px auto 25px auto;
@@ -435,11 +458,39 @@ textarea{font-family: 'Merriweather', serif;}
   text-align: center;
   color: red;
 }
+.commentTable
+{
+  width: 40%;
+}
+.titleCommentTable
+{
+  width: 28%;
+}
 .report
 {
   color:red;
   font-weight: bold;
 }
+.approveComment,
+.deleteComment
+{
+  border: none;
+  background-color: white;
+  outline-style: none;
+}
+.fa-thumbs-up
+{
+  color : green;
+  font-size: 1.5em;
+
+}
+.fa-times
+{
+ color : red;
+ font-size: 1.5em;
+}
+
+
 
 /* ============ EDIT CHAPTER VIEW =========== */
 
@@ -475,6 +526,7 @@ textarea{font-family: 'Merriweather', serif;}
 {
   justify-content: center;
 }
+#editChapter form label{font-size: 1.5em;}
 /* ============ NEW CHAPTER VIEW =========== */
 
 #newChapter
@@ -509,6 +561,7 @@ textarea{font-family: 'Merriweather', serif;}
 {
   justify-content: center;
 }
+#newChapter form label{font-size: 1.5em;}
 /* ============ ERROR VIEW =========== */
 
 #contentError

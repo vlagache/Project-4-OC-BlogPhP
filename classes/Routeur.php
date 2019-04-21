@@ -19,7 +19,12 @@ class Routeur
                           'sendEditChapter'  => array('controller' => 'Front', 'method' => 'sendEditChapter'),
                           'newChapter'       => array('controller' => 'Front', 'method' => 'newChapter'),
                           'sendNewChapter'   => array('controller' => 'Front', 'method' => 'sendNewChapter'),
-                          'deleteChapter'    => array('controller' => 'Front', 'method' => 'deleteChapter')
+                          'deleteChapter'    => array('controller' => 'Front', 'method' => 'deleteChapter'),
+                          'reportComment'    => array('controller' => 'Front', 'method' => 'reportComment'),
+                          'approveComment'   => array('controller' => 'Front', 'method' => 'approveComment'),
+                          'deleteComment'    => array('controller' => 'Front', 'method' => 'deleteComment')
+
+
 
 
                           // ajouter les routes

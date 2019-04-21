@@ -208,6 +208,24 @@ class Front {
         throw new Exception('Acces non autorisé ');
       }
     }
+    public function reportComment($params)
+    {
+      $commentManager = new CommentManager();
+      $commentManager->setReportCom($params->getParam('idCom'));
+      header('Location: index.php?action=chapter&id=' . $params->getParam('id'));
+    }
+    public function approveComment($params)
+    {
+      $commentManager = new CommentManager();
+      $commentManager->unsetReportCom($params->getParam('id'));
+      header('Location: index.php?action=adminArea');
+    }
+    public function deleteComment($params)
+    {
+      $commentManager = new CommentManager();
+      $commentManager->deleteComment($params->getParam('id'));
+      header('Location: index.php?action=adminArea');
+    }
 }
 
 
