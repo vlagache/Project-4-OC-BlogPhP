@@ -200,13 +200,41 @@ a:hover
   border-bottom: 1px dashed black;
 }
 
-
+/* ============= AUTHOR VIEW =========== */
+#contentAuthor
+{
+    position:relative;
+    top : -65px;
+    background: white;
+    z-index: 2;
+    border : 1px solid black;
+    width: 55%;
+    padding: 4%;
+    margin: auto;
+}
+#authorTitle
+{
+  font-size: 2em;
+  margin-bottom: 150px;
+}
+#authorDescription
+{
+  font-size: 1.1em;
+  text-align: justify;
+}
+.imgAuthor
+{
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  -webkit-clip-path: circle(50% at 50% 50%);
+}
 /* ============ CHAPTER VIEW =========== */
 #chapterViewTitle,
 #commentTitle,
 #postCommentTitle
 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 50px;
 }
 #postCommentTitle{margin-top: 30px;}
@@ -282,7 +310,6 @@ form,
 {
 
   display: flex;
-  color:#208aae;
   position:absolute;
   bottom : 1%;
   left: 3%;
@@ -294,7 +321,7 @@ form,
 }
 .reportCom a
 {
-  color:#208aae;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -590,4 +617,9 @@ footer
   height: 100px;
   width: 100%;
   background: linear-gradient(to right, #3f647e, #7ca49c);
+}
+#copyright
+{
+  margin-top: 30px;
+  text-align: center;
 }

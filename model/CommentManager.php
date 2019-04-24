@@ -1,9 +1,4 @@
 <?php
-
-require_once(MODEL.'DbManager.php');
-require_once('classes/Comment.php');
-
-
 class CommentManager extends DbManager {
 
 
@@ -51,13 +46,18 @@ class CommentManager extends DbManager {
     $affectedLines = $req->execute(array($chapterId, $author, $comment));
     return $affectedLines;
   }
+
+  /**
+   * [nbReportCom description]
+   * @return [type] [description]
+   */
   public function nbReportCom()
   {
     $db=$this->dbConnect();
     $req = $db->prepare('  SELECT COUNT(*) AS nbReportCom FROM comments WHERE report_com = 1');
     $req->execute();
     $nbReportCom = $req->fetch(PDO::FETCH_ASSOC);
-    return $nbReportCom;
+    return $nbReportCom['nbReportCom'];
   }
   public function setReportCom($commentId)
   {
@@ -76,5 +76,10 @@ class CommentManager extends DbManager {
     $db = $this->dbConnect();
     $req = $db->prepare('DELETE FROM comments WHERE id = ?');
     $req->execute(array($commentId));
-    }
+  }
+  // public function deleteComment($table,$commentId)
+  // {
+  //   $this->delete($table,$commentId);
+  // }
+  //
 }

@@ -8,6 +8,7 @@ class comment
   private $comment_date;
   private $chapter_name;
   private $report_com;
+  private $delete_com;
 
 
   public function hydrate(array $datas)
@@ -82,5 +83,13 @@ class comment
   public function setReportCom($report_com)
   {
     $this->report_com = $report_com;
+  }
+  public function getDeleteCom()
+  {
+    return $this->delete_com;
+  }
+  public function setDeleteCom($delete_com)
+  {
+    $this->delete_com = $delete_com;
   }
 }

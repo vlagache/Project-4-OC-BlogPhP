@@ -1,9 +1,10 @@
 <?php
+
 class Chapter
 {
   private $id;
-  // private $next_id;
-  // private $previous_id;
+  private $nextId;
+  private $previousId;
   private $title;
   private $content;
   private $creation_date;
@@ -31,17 +32,23 @@ class Chapter
   {
     return $this->id;
   }
+
+  public function setNextId($nextId)
+  {
+    $this->nextId = $nextId;
+  }
+
   public function getNextId()
   {
-    $id  = $this->id;
-    $id++;
-    return $id;
+    return $this->nextId;
+  }
+  public function setPreviousId($previousId)
+  {
+    $this->previousId = $previousId;
   }
   public function getPreviousId()
   {
-    $id  = $this->id;
-    $id--;
-    return $id;
+    return $this->previousId;
   }
   public function setId($id)
   {

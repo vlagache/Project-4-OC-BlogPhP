@@ -8,25 +8,28 @@ class Routeur
     private $action;
     private $controller;
     private $routes = [
-                          'chapter'          => array('controller' => 'Front', 'method' => 'chapter'),
-                          'listChapters'     => array('controller' => 'Front', 'method' => 'listChapters'),
-                          'addComment'       => array('controller' => 'Front', 'method' => 'addComment'),
-                          'adminAuth'        => array('controller' => 'Front', 'method' => 'adminAuth'),
-                          'checkPassword'    => array('controller' => 'Front', 'method' => 'checkPassword'),
-                          'adminArea'        => array('controller' => 'Front', 'method' => 'adminArea'),
-                          'logout'           => array('controller' => 'Front', 'method' => 'logout'),
-                          'editChapter'      => array('controller' => 'Front', 'method' => 'editChapter'),
-                          'sendEditChapter'  => array('controller' => 'Front', 'method' => 'sendEditChapter'),
-                          'newChapter'       => array('controller' => 'Front', 'method' => 'newChapter'),
-                          'sendNewChapter'   => array('controller' => 'Front', 'method' => 'sendNewChapter'),
-                          'deleteChapter'    => array('controller' => 'Front', 'method' => 'deleteChapter'),
-                          'reportComment'    => array('controller' => 'Front', 'method' => 'reportComment'),
-                          'approveComment'   => array('controller' => 'Front', 'method' => 'approveComment'),
-                          'deleteComment'    => array('controller' => 'Front', 'method' => 'deleteComment')
+                          'chapter'          => array('controller' => 'ChapterController', 'method' => 'chapter'),
+                          'listChapters'     => array('controller' => 'ChapterController', 'method' => 'listChapters'),
+                          'editChapter'      => array('controller' => 'ChapterController', 'method' => 'editChapter'),
+                          'sendEditChapter'  => array('controller' => 'ChapterController', 'method' => 'sendEditChapter'),
+                          'newChapter'       => array('controller' => 'ChapterController', 'method' => 'newChapter'),
+                          'sendNewChapter'   => array('controller' => 'ChapterController', 'method' => 'sendNewChapter'),
+                          'deleteChapter'    => array('controller' => 'ChapterController', 'method' => 'deleteChapter'),
 
+                          /* ****************************** */
 
+                          'addComment'       => array('controller' => 'CommentController', 'method' => 'addComment'),
+                          'reportComment'    => array('controller' => 'CommentController', 'method' => 'reportComment'),
+                          'approveComment'   => array('controller' => 'CommentController', 'method' => 'approveComment'),
+                          'deleteComment'    => array('controller' => 'CommentController', 'method' => 'deleteComment'),
 
+                          /* ****************************** */
 
+                          'adminAuth'        => array('controller' => 'AdminController', 'method' => 'adminAuth'),
+                          'checkPassword'    => array('controller' => 'AdminController', 'method' => 'checkPassword'),
+                          'adminArea'        => array('controller' => 'AdminController', 'method' => 'adminArea'),
+                          'logout'           => array('controller' => 'AdminController', 'method' => 'logout'),
+                          'author'           => array('controller' => 'AdminController', 'method' => 'author')
                           // ajouter les routes
                       ];
     private $params = array();

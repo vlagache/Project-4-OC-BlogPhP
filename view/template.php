@@ -4,7 +4,6 @@
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
-        <link href="<?= ASSETS;?>css/style.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -16,6 +15,15 @@
           language: 'fr_FR'
         });
         </script>
+
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <link href="<?= ASSETS;?>css/style.css" rel="stylesheet" />
+
+
 
     </head>
 
@@ -68,7 +76,11 @@
       </body>
 
       <footer>
-
+        <p id="copyright">
+          COPYRIGHT 2019 - VINCENT LAGACHE - PROJET ETUDIANT OPENCLASSROOMS
+        </p>
+        <div id="socialNetwork">
+        </div>
       </footer>
 
       <script src="assets/js/main.js"></script>
