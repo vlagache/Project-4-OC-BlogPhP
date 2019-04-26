@@ -88,7 +88,7 @@ class Chapter
     $date = new DateTime($edit_date);
     $this->edit_date = $date;
   }
-  public function getResumeContent($param = 300) {
+  public function getResumeContent($param = 400) {
     $this->setContent(substr($this->content,0,$param));
     return $this->getContent();
   }

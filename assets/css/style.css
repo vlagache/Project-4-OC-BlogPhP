@@ -1,625 +1,77 @@
-*
-{
-  margin:0px;
-  font-family:'Merriweather', serif;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Abel', sans-serif;
+  background-color: #f6f4f1;
+  color:#37474f;
+  font-size: 1.1em;
 }
-h2
-{
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-}
-body{background: #f4f8fb;}
 a
 {
-  color:black;
-}
-a:hover
-{
-  color : #208aae;
-}
-.div-hide{display:none;}
-.div-show{display:block;}
-
-/* ============ HEADER ============ */
-.image_title_header
-{
-  z-index: 1;
-  position:relative;
-  width: 100%;
-}
-.imgHeader
-{
-  width: 100%;
-  border-bottom: 1px solid black;
-}
-.textHeader
-{
-  width: 675px;
-  text-align: center;
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  margin-left: -337px;
-}
-.titleMain
-{
-  font-size: 3em;
-  font-family: 'Playfair Display', serif;
-}
-.introduction
-{
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5em;
-}
-
-.menu
-{
-  position:fixed;
-  z-index: 3;
-  border-bottom: 1px solid grey;
-  background-color:rgb(244,248,251,1);
-  height: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.menuNav ul
-{
-  list-style-type: none;
-  display:flex;
+  color:#26a69a;
 
 }
-.menuNav li
+main
 {
-  font-size: 1.3em;
-  margin-right: 20px;
+  flex: 1 0 auto;
 }
-.menuNav li.selected
+strong
 {
   font-weight: 600;
-  color :#208aae;
 }
-.menuNav a
-{
-  font-family: 'Playfair Display', serif;
-  font-style: bold;
-  text-decoration: none;
-  color: inherit;
-}
-.menuNav a:hover
-{
-  color : inherit;
-  font-size: inherit;
-}
-.menu .adminHeader
-{
-  font-family: 'Playfair Display', serif;
-  position: absolute;
-  right:1%;
-}
-.adminHeader .adminCo
-{
-  display: flex;
-  font-size: 0.8em;
-}
- .adminHeader .logoutForm
-{
 
-  border: none;
-  box-shadow: none;
-}
-.adminHeader .submitDeco
-{
-  border: none;
-  box-shadow: none;
-  background-color: rgb(244,248,251,1);
-  outline-style:none;
-}
-.iconeLogout
-{
-  font-size: 1.5em;
-  color: #208aae;
-  border:0px;
-}
-/* ============ HOME ============ */
+/* NAV BAR */
 
+nav ul a
+{
+  color:inherit;
+}
+.selected
+{
+  color:#37474f;
+}
+.material-icons
+{
+  color: #26a69a;
+}
+.brand-logo
+{
+  margin-left: 2%;
+}
+#nav-mobile
+{
+  margin-right: 2%;
+}
+li:hover
+{
+  /* background-color: red; */
+}
+/* HOME */
+#title
+{
+  font-family: 'Amatic SC', cursive;
+
+}
 #chapters
 {
-  position: relative;
-  top: -85px;
-  margin:auto;
-  width: 90%;
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 3%;
 }
-.chapter
+.comment
 {
-
-  z-index: 2;
-  padding: 2%;
-  position: relative;
-  border:1px solid black;
-  margin: 1%;
-  width: 300px;
-  border-radius: 2%;
-  box-shadow: 3px 3px 5px grey;
-  background-color: white;
+  border-bottom:1px dashed #26a69a;
 }
-.chapter em
+.test
 {
-  font-size: 0.8em;
-}
-.chapter p
-{
-
-  text-align: justify;
-  padding: 2%;
-}
-.chapter_link
-{
-  position:absolute;
-  bottom: 4%;
-  right: 5%;
-}
-#lastChapters,
-#lastComments
-{
-  margin-left:auto;
-  margin-right: auto;
-  margin-bottom: 25px;
-  z-index: 2;
-  border:1px solid black;
-  width: 40%;
-  box-shadow: 3px 3px 5px grey;
-  background-color: white;
-
-}
-
-#lastChapters h2,
-#lastComments h2
-{margin-top: 15px;}
-
-#tableOfContent,
-#listOfLastComments
-{
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-}
-.commentHome
-{
-  text-align: center;
-  padding: 1%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px dashed black;
-}
-
-/* ============= AUTHOR VIEW =========== */
-#contentAuthor
-{
-    position:relative;
-    top : -65px;
-    background: white;
-    z-index: 2;
-    border : 1px solid black;
-    width: 55%;
-    padding: 4%;
-    margin: auto;
-}
-#authorTitle
-{
-  font-size: 2em;
-  margin-bottom: 150px;
-}
-#authorDescription
-{
-  font-size: 1.1em;
-  text-align: justify;
-}
-.imgAuthor
-{
-  position: absolute;
-  top: 3%;
-  left: 5%;
-  -webkit-clip-path: circle(50% at 50% 50%);
-}
-/* ============ CHAPTER VIEW =========== */
-#chapterViewTitle,
-#commentTitle,
-#postCommentTitle
-{
-  font-size: 2em;
-  margin-bottom: 50px;
-}
-#postCommentTitle{margin-top: 30px;}
-#contentChapter,
-#contentComment,
-form,
-#comment,
-#author,
-#submit
-{
-  border: 1px solid black;
-  box-shadow: 3px 3px 5px grey;
-}
-#contentChapter
-{
-  background: white;
-  z-index: 2;
-  position:relative;
-  top:-65px;
-  width: 50%;
-  margin:auto;
   font-size: 1.2em;
-  padding: 5%;
 }
-#nextChapter
+/* FOOTER */
+.page-footer
 {
-  position:absolute;
-  bottom:4%;
-  right:4%;
-  font-family: 'Playfair Display', serif;
+  background-color: #f0edea;
 }
-#previousChapter
+.fab
 {
-  position:absolute;
-  bottom:4%;
-  left:4%;
-  font-family: 'Playfair Display', serif;
-}
-#contentComment
-{
-  width: 50%;
-  margin:auto;
-  height: auto;
-
-}
-#contentBlock
-{
-  border:1px solid black;
-  box-shadow: 3px 3px 5px grey;
-  width: 80%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  background: white;
-}
-.commentChapter
-{
-  width: 60%;
-  text-align: justify;
-  padding: 2%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  border-bottom: 1px dashed black;
-  position: relative;
-}
-.authorComment{margin-bottom: 15px;}
-.commentComment{margin-bottom: 20px;}
-.reportCom
-{
-
-  display: flex;
-  position:absolute;
-  bottom : 1%;
-  left: 3%;
-}
-.reportCom p
-{
-  font-size: 0.9em;
-  margin-left: 10px;
-}
-.reportCom a
-{
-  font-weight: bold;
-  text-decoration: none;
-}
-
-form
-{
-  text-align: center;
-  width: 50%;
-  margin:auto;
-
-}
-form label
-{
-  font-size: 1.8em;
-  font-family: 'Playfair Display', serif;
-}
-textarea{font-family: 'Merriweather', serif;}
-#author,
-#comment
-{
-  margin-top: 25px;
-  width: 80%;
-  display: block;
-  margin-left:auto;
-  margin-right: auto;
-  font-family: 'Merriweather', serif;
-  font-size: 1.1em;
-}
-#author
-{
-  height: 50px;
-}
-#comment
-{
-  height: 300px;
-}
-#submit
-{
-  margin-top: 25px;
-  margin-bottom: 25px;;
-  font-family: 'Playfair Display', serif;
+  color:#26a69a;
   font-size: 1.5em;
-  border-radius: 5%;
-}
-.returnHome
-{
-  font-family: 'Playfair Display', serif;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  font-size: 1.5em;
-  text-align: center;
-}
-/* ============ ADMIN AUTH VIEW =========== */
-#formAdmin
-{
-  position:relative;
-  top : -65px;
-  background: white;
-  z-index: 2;
-  border : 1px solid black;
-  width: 55%;
-  padding: 4%;
-  margin: auto;
-  padding: 2%;
-}
-
-#login,
-#password
-{
-
-    margin-top: 25px;
-    margin-left:auto;
-    margin-right: auto;
-    font-family: 'Merriweather', serif;
-    font-size: 1em;
-}
-#adminButton
-{
-    margin-top: 25px;
-    margin-bottom: 25px;;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.7em;
-    border-radius: 5%;
-}
-/* ============ ADMIN AREA VIEW =========== */
-#adminArea
-{
-  position:relative;
-  top : -65px;
-  background: white;
-  z-index: 2;
-  border : 1px solid black;
-  width: 80%;
-  padding: 4%;
-  margin: auto;
-  padding: 2%;
-}
-#welcomeAdmin
-{
-  width: 100%;
-  text-align: center;
-  font-size: 1.5em;
-  padding-bottom: 1%;
-  border-bottom: 1px dashed black;
-}
-.titleAdminArea
-{
-  text-align: center;
-  font-size: 1.4em;
-  margin: 35px 0px 35px 0px;
-}
-#editMsg
-{
-  border: 2px dashed red;
-  width: 75%;
-  margin:25px auto 25px auto;
-}
-#writeNewChapter
-{
-  text-align: center;
-  font-size: 1.4em;
-  margin:25px auto 25px auto;
-}
-#tableChapter
-{
-  width: 65%;
-  border:1px solid black;
-  box-shadow: 3px 3px 5px grey;
-  margin:25px auto 25px auto;
-  border-collapse:collapse
-}
-#tableChapter #title,
-#tableComment #title
-{
-  background-color:#f4f8fb;
-}
-#tableChapter th,
-#tableComment th
-{
-  vertical-align:middle;
-  border-bottom:1px solid black;
-  padding:1%;
-}
-#tableChapter td,
-#tableComment td
-{
-  vertical-align:middle;
-  padding: 1%;
-}
-#tableComment
-{
-  width: 95%;
-  border:1px solid black;
-  box-shadow: 3px 3px 5px grey;
-  margin:25px auto 25px auto;
-  border-collapse:collapse
-}
-#nbReportCom
-{
-  font-size: 1.1em;
-  font-style: italic;
-  text-align: center;
-  color: red;
-}
-.commentTable
-{
-  width: 40%;
-}
-.titleCommentTable
-{
-  width: 28%;
-}
-.report
-{
-  color:red;
-  font-weight: bold;
-}
-.approveComment,
-.deleteComment
-{
-  border: none;
-  background-color: white;
-  outline-style: none;
-}
-.fa-thumbs-up
-{
-  color : green;
-  font-size: 1.5em;
-
-}
-.fa-times
-{
- color : red;
- font-size: 1.5em;
-}
-
-
-
-/* ============ EDIT CHAPTER VIEW =========== */
-
-#editChapter
-{
-  position:relative;
-  top : -65px;
-  background: white;
-  z-index: 2;
-  border : 1px solid black;
-  width: 60%;
-  padding: 4%;
-  margin: auto;
-  padding: 2%;
-}
-#editChapter form { width: 80%;}
-#editChapter #titleChapter
-{
-  width: 80%;
-  text-align: center;
-  vertical-align: center;
-  margin: 25px 0px 15px 0px;
-  font-size: 1.3em;
-}
-#editChapter #tinyMce{height: 800px;}
-#welcomeEdit
-{
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 40px;
-}
-#editChapter form submit
-{
-  justify-content: center;
-}
-#editChapter form label{font-size: 1.5em;}
-/* ============ NEW CHAPTER VIEW =========== */
-
-#newChapter
-{
-  position:relative;
-  top : -65px;
-  background: white;
-  z-index: 2;
-  border : 1px solid black;
-  width: 60%;
-  padding: 4%;
-  margin: auto;
-  padding: 2%;
-}
-#newChapter form { width: 80%;}
-#newChapter #titleChapter
-{
-  width: 80%;
-  text-align: center;
-  vertical-align: center;
-  margin: 25px 0px 15px 0px;
-  font-size: 1.3em;
-}
-#newChapter #tinyMce{height: 800px;}
-#welcomeNew
-{
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 40px;
-}
-#newChapter form submit
-{
-  justify-content: center;
-}
-#newChapter form label{font-size: 1.5em;}
-/* ============ ERROR VIEW =========== */
-
-#contentError
-{
-  position:relative;
-  top : -65px;
-  background: white;
-  z-index: 2;
-  border : 1px solid black;
-  width: 55%;
-  padding: 4%;
-  margin: auto;
-}
-#errorMsg
-{
-  text-align: center;
-  font-size: 2em;
-  width: 100%;
-  margin-bottom: 70px;
-}
-/* ============ FOOTER =========== */
-footer
-{
-  margin-top: 50px;
-  border-top:1px solid black;
-  height: 100px;
-  width: 100%;
-  background: linear-gradient(to right, #3f647e, #7ca49c);
-}
-#copyright
-{
-  margin-top: 30px;
-  text-align: center;
 }
