@@ -20,6 +20,15 @@ strong
 {
   font-weight: 600;
 }
+.returnHome
+{
+
+  margin-top: 7%;
+}
+.material-icons
+{
+  color:white;
+}
 
 /* NAV BAR */
 
@@ -31,10 +40,7 @@ nav ul a
 {
   color:#37474f;
 }
-.material-icons
-{
-  color: #26a69a;
-}
+
 .brand-logo
 {
   margin-left: 2%;
@@ -43,10 +49,11 @@ nav ul a
 {
   margin-right: 2%;
 }
-li:hover
+nav .sidenav-trigger .material-icons
 {
-  /* background-color: red; */
+    color: #26a69a;
 }
+
 /* HOME */
 #title
 {
@@ -57,17 +64,69 @@ li:hover
 {
   margin-top: 3%;
 }
+#chapters .material-icons
+{
+  color: #26a69a;
+}
 .comment
 {
   border-bottom:1px dashed #26a69a;
 }
-.test
+.commentCard
 {
   font-size: 1.2em;
+}
+/* AUTHOR VIEW */
+#authorContent
+{
+  margin-top: 3%;
+}
+#author
+{
+  text-align: justify;
+}
+/* CHAPTER VIEW */
+.contentChapter
+{
+  font-size: 1.1em;
+}
+.input-field label,
+label,
+label.active
+{
+  font-size: 1.5em;
+}
+
+/* ADMIN AUTH VIEW */
+#authContent
+{
+border:1px solid #f6f4f1;
+margin-top: 6.7%;
+}
+
+
+/* ADMIN AREA VIEW*/
+table.hilight > tbody > tr:hover
+{
+  background-color: rgba(38, 166, 154, 0.2);
+}
+table.hilight > tbody > tr.report:hover
+{
+  background-color: rgba( 244, 67, 54, 0.2);
+
+}
+.report{color:red;}
+/* ERROR VIEW*/
+#errorContent
+{
+  margin-top: 7%;
+  margin-bottom: 12%;
 }
 /* FOOTER */
 .page-footer
 {
+  position: relative;
+  bottom: 0;
   background-color: #f0edea;
 }
 .fab

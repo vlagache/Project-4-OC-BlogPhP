@@ -9,9 +9,12 @@ class AdminController {
     }
     public function author($params)
     {
+      $chapterManager = new ChapterManager();
+      $chapters = $chapterManager->getChapters(); // Footer
+
       $title = 'A propos de l\'auteur';
       $myView = new View('authorView');
-      $myView-> render(array('title' => $title, 'viewActive' => $this->viewActive));
+      $myView-> render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
     }
     public function adminAuth($params){
 
@@ -34,7 +37,7 @@ class AdminController {
       } else {
         $title = 'Zone Login Administration';
         $myView = new View('adminAuthView');
-        $myView->render(array('title' => $title, 'viewActive' => $this->viewActive));
+        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
 
       }
 
@@ -49,11 +52,11 @@ class AdminController {
           $_SESSION['admin'] = $admin['login'];
           header('Location: index.php?action=adminArea');
         } else {
-          throw new Exception('Mauvais mot de passe ');
+          throw new Exception('Mauvais identifiant ou mauvais mot de passe ');
         }
       }
       else {
-      throw new Exception ('Login ou Mot de passe non saisi');
+      throw new Exception ('Identifiant ou Mot de passe non saisi');
       }
     }
     public function adminArea($params){

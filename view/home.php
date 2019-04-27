@@ -48,7 +48,7 @@
 <div class="container">
   <div class="row">
     <div class=" col s12 m8">
-      <div class="card test">
+      <div class="card commentCard">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="<?= ASSETS;?>images/pen.jpg">
         </div>

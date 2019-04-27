@@ -57,6 +57,9 @@ class Routeur
             // $myController = new Front();
             // $viewActive = $myController -> menuActive($this->params);
             $viewActive = '';
+            $chapterManager = new ChapterManager();
+            $chapters = $chapterManager->getChapters(); // Footer
+            
             $errorMessage = $e->getMessage();
             require('view/errorView.php');
           }

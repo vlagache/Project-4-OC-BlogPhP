@@ -34,11 +34,12 @@ class ChapterController {
 
 
         $chapter = $chapterManager->getChapter($params->getParam('id'));
+        $chapters = $chapterManager->getChapters(); // Footer
         $comments = $commentManager->getComments($params->getParam('id'));
 
         $title = $chapter->getTitle();
         $myView = new View('chapterView');
-        $myView->render(array('chapter' => $chapter, 'comments' => $comments, 'title' => $title, 'viewActive' => $this->viewActive));
+        $myView->render(array('chapter' => $chapter, 'chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $this->viewActive));
       } else {
         throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
       }

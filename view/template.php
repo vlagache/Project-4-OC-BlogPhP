@@ -50,6 +50,11 @@
                   <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
                     <a href="index.php?action=adminAuth">ADMINISTRATION</a>
                   </li>
+                  <li>
+                    <?php if(isset($_SESSION['admin'])):?>
+                      <a href="index.php?action=logout" class="btn-floating tooltipped teal lighten-1" data-position="bottom" data-tooltip="Déconnexion <?= $_SESSION['admin'] ?>"><i class="material-icons">lock</i></a>
+                    <?php endif ?>
+                  </li>
                 </ul>
               </div>
             </nav>
@@ -70,30 +75,22 @@
             <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
               <a href="index.php?action=adminAuth">ADMINISTRATION</a>
             </li>
-         </ul>
-
-
-
-          <div class="adminHeader">
-            <div class="adminCo">
+            <li>
               <?php if(isset($_SESSION['admin'])):?>
-                <form action="index.php?action=logout" method="post" class="logoutForm">
-                    <button type="submit" class="submitDeco"><i class=" iconeLogout fas fa-power-off"></i></button>
-                </form>
-                <p>
-                  Connecté en tant que <?= $_SESSION['admin']; ?>
-                </p>
+                <a href="index.php?action=logout" class="btn-small tooltipped waves-effect waves-light" data-position="bottom" data-tooltip="Déconnexion <?= $_SESSION['admin'] ?>">Se deconnecter</a>
               <?php endif ?>
-            </div>
-          </div>
+            </li>
+         </ul>
 
         </div>
       </header>
 
 
-      <body>
-          <?= $content ?>
-      </body>
+      <main>
+        <?= $content ?>
+      </main>
+
+
 
       <footer class="page-footer">
 
@@ -117,11 +114,13 @@
 
             <div class="col s12 m6 l6 xl5">
               <h5 class="blue-grey-text text-darken-3">Table des matières</h5>
-              <?php foreach ($chapters as $chapter):?>
-                <li>
-                  <a class="teal-text text-lighten-1" href="index.php?action=chapter&amp;id=<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
-                </li>
-              <?php endforeach ?>
+              <ul>
+                <?php foreach ($chapters as $chapter):?>
+                  <li>
+                    <a class="teal-text text-lighten-1" href="index.php?action=chapter&amp;id=<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
+                  </li>
+                <?php endforeach ?>
+              </ul>
             </div>
 
             <div class="col s12 m6 l6 xl1">
