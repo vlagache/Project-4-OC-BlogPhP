@@ -48,6 +48,28 @@ class CommentController{
       throw new Exception('Acces non autorisé ');
     }
   }
+  public function hiddenComment($params)
+  {
+    if (isset($_SESSION['admin']))
+    {
+      $commentManager = new CommentManager();
+      $commentManager->hiddenComment($params->getParam('id'));
+      header('Location: index.php?action=adminArea');
+    } else {
+      throw new Exception('Acces non autorisé ');
+    }
+  }
+  public function restoreComment($params)
+  {
+    if (isset($_SESSION['admin']))
+    {
+      $commentManager = new CommentManager();
+      $commentManager->restoreComment($params->getParam('id'));
+      header('Location: index.php?action=adminArea');
+    } else {
+      throw new Exception('Acces non autorisé');
+    }
+  }
   public function deleteComment($params)
   {
     if (isset($_SESSION['admin']))
@@ -56,7 +78,7 @@ class CommentController{
       $commentManager->deleteComment($params->getParam('id'));
       header('Location: index.php?action=adminArea');
     } else {
-      throw new Exception('Acces non autorisé ');
+      throw new Exception('Acces non autorisé');
     }
   }
 

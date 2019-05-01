@@ -8,10 +8,11 @@ class ChapterManager extends DbManager
   public function getChapters()
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date FROM chapters ORDER BY creation_date DESC');
+    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, trash_chapter FROM chapters ORDER BY creation_date DESC');
     $req->execute();
 
     $chapters = array();
+
     while($data = $req->fetch(PDO::FETCH_ASSOC)) {
       $chapter = new Chapter();
       $chapter->hydrate($data);
@@ -25,7 +26,7 @@ class ChapterManager extends DbManager
   public function getChapter($chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, creation_date FROM chapters WHERE id = ?');
+    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
     $data = $req->fetch(PDO::FETCH_ASSOC);
 
@@ -42,26 +43,26 @@ class ChapterManager extends DbManager
   }
 
   /**
-   * [getNextId Returns the id of the next chapter in the database]
+   * [getNextId Returns the id of the next chapter who is not in the trash ]
    * @param  [int] $chapterId [description]
    * @return [string|null] $data['id'] [description]
    */
   public function getNextId(Int $chapterId) {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id FROM chapters WHERE id > ? LIMIT 1');
+    $req = $db->prepare('SELECT id FROM chapters WHERE id > ? AND trash_chapter = 0 ORDER BY id ASC  LIMIT 1');
     $req->execute(array($chapterId));
     if(!$data =  $req->fetch(PDO::FETCH_ASSOC)) return null;
     return $data['id'];
   }
   /**
-   * [getPreviousId Returns the id of thes next chapter in the database]
+   * [getPreviousId Returns the id of thes next chapter who is not in the trash ]
    * @param  Int    $chapterId [description]
    * @return [string|null]            [description]
    */
   public function getPreviousId(Int $chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id FROM chapters WHERE id < ?  LIMIT 1');
+    $req = $db->prepare('SELECT id FROM chapters WHERE id < ? AND trash_chapter = 0 ORDER BY id DESC LIMIT 1');
     $req->execute(array($chapterId));
     if(!$data =  $req->fetch(PDO::FETCH_ASSOC)) return null;
     return $data['id'];
@@ -80,6 +81,20 @@ class ChapterManager extends DbManager
       $db = $this->dbConnect();
       $req = $db->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW()) ');
       $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent')));
+  }
+  public function trashChapter($chapterId)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE chapters SET trash_chapter = 1 WHERE id = ?');
+    $req->execute(array($chapterId));
+
+  }
+  public function restoreChapter($chapterId)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE chapters SET trash_chapter = 0 WHERE id = ?');
+    $req->execute(array($chapterId));
+
   }
   public function deleteChapter($chapterId)
   {

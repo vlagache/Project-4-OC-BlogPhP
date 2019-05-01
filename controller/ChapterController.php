@@ -53,11 +53,12 @@ class ChapterController {
           $chapterManager = new ChapterManager();
 
           $chapter = $chapterManager->getChapter($params->getParam('id'));
+          $chapters = $chapterManager->getChapters();
 
 
           $title = 'Edition de : ' . $chapter->getTitle();
           $myView = new View('editChapterView');
-          $myView->render(array('chapter' => $chapter,'title' => $title, 'viewActive' => $this->viewActive));
+          $myView->render(array('chapter' => $chapter, 'chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
         } else {
           throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
         }
@@ -77,9 +78,12 @@ class ChapterController {
     {
       if (isset($_SESSION['admin']))
       {
+        $chapterManager = new ChapterManager();
+        $chapters = $chapterManager->getChapters();
+
         $title = ' Création d\'un nouveau chapitre ';
         $myView = new View('newChapterView');
-        $myView->render(array('title' => $title, 'viewActive' => $this->viewActive));
+        $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
       } else
       {
         throw new Exception('Acces non autorisé ');
@@ -90,6 +94,30 @@ class ChapterController {
       $chapterManager = new ChapterManager();
       $chapterManager->newChapter($params);
       header('Location: index.php?action=adminArea');
+    }
+    public function trashChapter($params)
+    {
+      if (isset($_SESSION['admin']))
+      {
+        $chapterManager = new ChapterManager();
+        $chapterManager->trashChapter($params->getParam('id'));
+        header('Location: index.php?action=adminArea');
+      } else
+      {
+        throw new Exception('Acces non autorisé ');
+      }
+    }
+    public function restoreChapter($params)
+    {
+      if (isset($_SESSION['admin']))
+      {
+        $chapterManager = new ChapterManager();
+        $chapterManager->restoreChapter($params->getParam('id'));
+        header('Location: index.php?action=adminArea');
+      } else
+      {
+        throw new Exception('Acces non autorisé ');
+      }
     }
     public function deleteChapter($params)
     {

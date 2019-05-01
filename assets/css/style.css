@@ -29,6 +29,15 @@ strong
 {
   color:white;
 }
+.material-tooltip
+{
+  background-color: #26a69a;
+}
+.line
+{
+  margin: 5% 0 5% 0;
+  border-bottom:1px dashed #26a69a;
+}
 
 /* NAV BAR */
 
@@ -55,7 +64,7 @@ nav .sidenav-trigger .material-icons
 }
 
 /* HOME */
-#title
+#titleMain
 {
   font-family: 'Amatic SC', cursive;
 
@@ -64,7 +73,8 @@ nav .sidenav-trigger .material-icons
 {
   margin-top: 3%;
 }
-#chapters .material-icons
+#chapters .material-icons,
+#lastComments .material-icons
 {
   color: #26a69a;
 }
@@ -83,10 +93,12 @@ nav .sidenav-trigger .material-icons
 }
 #author
 {
+  font-size: 1.1em;
   text-align: justify;
 }
 /* CHAPTER VIEW */
-.contentChapter
+.contentChapter,
+#contentComment
 {
   font-size: 1.1em;
 }
@@ -96,7 +108,10 @@ label.active
 {
   font-size: 1.5em;
 }
-
+#nextChapterButton
+{
+  margin-left: 36%;
+}
 /* ADMIN AUTH VIEW */
 #authContent
 {
@@ -115,7 +130,39 @@ table.hilight > tbody > tr.report:hover
   background-color: rgba( 244, 67, 54, 0.2);
 
 }
+.modal-content{color:black;}
 .report{color:red;}
+.btn-report-com
+{
+
+    position: relative;
+    background-color: #26a69a;
+    color:white;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.btn-report-com > span
+{
+  position: absolute;
+  top: 0%;
+  left:38%;
+}
+.redButton{background-color: red !important;}
+.title{margin-bottom: 6%;}
+#comMod,
+#chapMod
+{
+  margin-top: 5%;
+}
+
+
+#options{margin-bottom: 6%;}
+
+/* NEW CHAPTER VIEW */
+#tinyMce{height: 500px;}
 /* ERROR VIEW*/
 #errorContent
 {

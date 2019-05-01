@@ -6,7 +6,7 @@ class CommentManager extends DbManager {
   public function getLastComments()
   {
     $db = $this->dbConnect();
-    $req = $db->prepare('SELECT com.id, com.chapter_id, com.author, com.comment, com.comment_date, com.report_com,chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC ');
+    $req = $db->prepare('SELECT com.id, com.chapter_id, com.author, com.comment, com.comment_date, com.report_com, com.hidden_com, com.hidden_by, com.hidden_date, chap.title FROM chapters chap INNER JOIN comments com ON com.chapter_id = chap.id ORDER BY com.comment_date DESC ');
     $req -> execute();
 
     $comments = array();
@@ -27,7 +27,7 @@ class CommentManager extends DbManager {
   public function getComments($chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, chapter_id, author, comment, comment_date FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
+    $req = $db->prepare('SELECT id, chapter_id, author, comment, comment_date, hidden_com FROM comments WHERE chapter_id = ? ORDER BY comment_date DESC');
     $req->execute(array($chapterId));
 
     $comments = array();
@@ -42,7 +42,7 @@ class CommentManager extends DbManager {
   public function postComment($chapterId, $author, $comment)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('INSERT INTO comments (chapter_id, author, comment, comment_date, report_com, delete_com) VALUES(?, ?, ?, NOW(), 0, 0)');
+    $req = $db->prepare('INSERT INTO comments (chapter_id, author, comment, comment_date, report_com, hidden_com) VALUES(?, ?, ?, NOW(), 0, 0)');
     $affectedLines = $req->execute(array($chapterId, $author, $comment));
     return $affectedLines;
   }
@@ -71,12 +71,25 @@ class CommentManager extends DbManager {
     $req = $db->prepare('UPDATE comments SET report_com = 0 WHERE id = ? ');
     $req->execute(array($commentId));
   }
+  public function hiddenComment($commentId)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE comments SET hidden_com = 1, report_com = 0, hidden_by = ?, hidden_date = NOW() WHERE id = ?');
+    $req->execute(array($_SESSION['admin'], $commentId));
+  }
+  public function restoreComment($commentId)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('UPDATE comments SET hidden_com = 0, hidden_by = NULL, hidden_date = NULL WHERE id = ?');
+    $req->execute(array($commentId));
+  }
   public function deleteComment($commentId)
   {
     $db = $this->dbConnect();
     $req = $db->prepare('DELETE FROM comments WHERE id = ?');
     $req->execute(array($commentId));
   }
+
   // public function deleteComment($table,$commentId)
   // {
   //   $this->delete($table,$commentId);

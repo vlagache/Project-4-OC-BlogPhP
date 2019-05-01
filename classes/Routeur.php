@@ -14,6 +14,8 @@ class Routeur
                           'sendEditChapter'  => array('controller' => 'ChapterController', 'method' => 'sendEditChapter'),
                           'newChapter'       => array('controller' => 'ChapterController', 'method' => 'newChapter'),
                           'sendNewChapter'   => array('controller' => 'ChapterController', 'method' => 'sendNewChapter'),
+                          'trashChapter'     => array('controller' => 'ChapterController', 'method' => 'trashChapter'),
+                          'restoreChapter'   => array('controller' => 'ChapterController', 'method' => 'restoreChapter'),
                           'deleteChapter'    => array('controller' => 'ChapterController', 'method' => 'deleteChapter'),
 
                           /* ****************************** */
@@ -21,6 +23,8 @@ class Routeur
                           'addComment'       => array('controller' => 'CommentController', 'method' => 'addComment'),
                           'reportComment'    => array('controller' => 'CommentController', 'method' => 'reportComment'),
                           'approveComment'   => array('controller' => 'CommentController', 'method' => 'approveComment'),
+                          'hiddenComment'    => array('controller' => 'CommentController', 'method' => 'hiddenComment'),
+                          'restoreComment'   => array('controller' => 'CommentController', 'method' => 'restoreComment'),
                           'deleteComment'    => array('controller' => 'CommentController', 'method' => 'deleteComment'),
 
                           /* ****************************** */
@@ -59,7 +63,7 @@ class Routeur
             $viewActive = '';
             $chapterManager = new ChapterManager();
             $chapters = $chapterManager->getChapters(); // Footer
-            
+
             $errorMessage = $e->getMessage();
             require('view/errorView.php');
           }

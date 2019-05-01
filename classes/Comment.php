@@ -8,7 +8,9 @@ class comment
   private $comment_date;
   private $chapter_name;
   private $report_com;
-  private $delete_com;
+  private $hidden_com;
+  private $hidden_by;
+  private $hidden_date;
 
 
   public function hydrate(array $datas)
@@ -84,12 +86,29 @@ class comment
   {
     $this->report_com = $report_com;
   }
-  public function getDeleteCom()
+  public function getHiddenCom()
   {
-    return $this->delete_com;
+    return $this->hidden_com;
   }
-  public function setDeleteCom($delete_com)
+  public function setHiddenCom($hidden_com)
   {
-    $this->delete_com = $delete_com;
+    $this->hidden_com = $hidden_com;
+  }
+  public function getHiddenBy()
+  {
+    return $this->hidden_by;
+  }
+  public function setHiddenBy($hidden_by)
+  {
+    $this->hidden_by = $hidden_by;
+  }
+  public function getHiddenDate()
+  {
+    return $this->hidden_date;
+  }
+  public function setHiddenDate($hidden_date)
+  {
+    $date = new DateTime($hidden_date);
+    $this->hidden_date = $date;
   }
 }

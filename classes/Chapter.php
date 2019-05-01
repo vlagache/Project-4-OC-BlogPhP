@@ -9,12 +9,15 @@ class Chapter
   private $content;
   private $creation_date;
   private $edit_date;
+  private $trash_chapter;
 
 
   public function hydrate(array $datas)
   {
+
     foreach ($datas as $key => $value)
     {
+
       $elements = explode('_', $key); // Ex : creation_date => creation & date
 
       $method = 'set';
@@ -85,8 +88,20 @@ class Chapter
   }
   public function setEditDate($edit_date)
   {
-    $date = new DateTime($edit_date);
-    $this->edit_date = $date;
+    if($edit_date == null){
+      $this->edit_date = null;
+    } else {
+      $date = new DateTime($edit_date);
+      $this->edit_date = $date;
+    }
+  }
+  public function getTrashChapter()
+  {
+    return $this->trash_chapter;
+  }
+  public function setTrashChapter($trash_chapter)
+  {
+    $this->trash_chapter = $trash_chapter;
   }
   public function getResumeContent($param = 400) {
     $this->setContent(substr($this->content,0,$param));
