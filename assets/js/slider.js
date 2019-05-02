@@ -10,6 +10,7 @@ class Slider
   contentSlider()
   {
     document.getElementById("sliderAuthor").innerHTML = this.array[this.indice].author;
+    document.getElementById("sliderDate").innerHTML = ' à commenté le ' +  this.array[this.indice].commentDate;
     document.getElementById("sliderComment").innerHTML = this.array[this.indice].comment;
   }
   nextSlide(){

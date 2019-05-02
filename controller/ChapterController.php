@@ -90,8 +90,34 @@ class ChapterController {
     }
     public function sendNewChapter($params)
     {
+
+      // echo $_FILES['thumbnail']['name']; // ex  : road2-alaska.jpg
+      // echo ' /type// ' . $_FILES['thumbnail']['type']; // ex : image/jpg
+      // echo ' /size// ' . $_FILES['thumbnail']['size']; : // ex : 455796 ( ko )
+      // echo ' /tmp_name// ' . $_FILES['thumbnail']['tmp_name']; // addresse du fichier temporaire
+      // echo ' /error// ' . $_FILES['thumbnail']['error']; // code erreur , 0 si tout est bon
+      // exit;
       $chapterManager = new ChapterManager();
-      $chapterManager->newChapter($params);
+      $statusChapters = $chapterManager->showStatus('chapters');
+
+
+      if ($_FILES['thumbnail']['error'] > 0 )
+      {
+        throw new Exception('Erreur lors du chargement de la miniature');
+      } else
+      {
+        $name = basename($_FILES["thumbnail"]["name"]); // alaskaMiniature.jpg
+        $elements = explode('.',$name); // alaskaMiniature & jpg
+        $elements[0] .= $statusChapters['Auto_increment']; // alaskaMiniature10
+        $nameUpFile = implode('.',$elements); // alaskaMiniature10.jpg
+
+
+        $tmp_name = $_FILES['thumbnail']['tmp_name'];
+        $destination = 'assets/images/thumbnails';
+
+        move_uploaded_file($tmp_name,$destination . '/' . $nameUpFile);
+        $chapterManager->newChapter($params, $nameUpFile);
+      }
       header('Location: index.php?action=adminArea');
     }
     public function trashChapter($params)
@@ -123,7 +149,10 @@ class ChapterController {
       if (isset($_SESSION['admin']))
       {
         $chapterManager = new ChapterManager();
+        $commentManager = new CommentManager();
+
         $chapterManager->deleteChapter($params->getParam('id'));
+        $commentManager->deleteAllComments($params->getParam('id'));
         header('Location: index.php?action=adminArea');
       } else
       {

@@ -89,6 +89,12 @@ class CommentManager extends DbManager {
     $req = $db->prepare('DELETE FROM comments WHERE id = ?');
     $req->execute(array($commentId));
   }
+  public function deleteAllComments($chapterId)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('DELETE FROM comments WHERE chapter_id = ?');
+    $req->execute(array($chapterId));
+  }
 
   // public function deleteComment($table,$commentId)
   // {

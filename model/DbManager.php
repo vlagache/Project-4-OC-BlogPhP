@@ -22,6 +22,5 @@
       $req = $db->prepare('DELETE FROM ? WHERE id = ? ');
       $req->execute(array($table,$id));
     }
-
    // abstract public function getNameTable();
   }

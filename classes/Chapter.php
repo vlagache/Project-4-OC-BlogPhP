@@ -10,6 +10,7 @@ class Chapter
   private $creation_date;
   private $edit_date;
   private $trash_chapter;
+  private $name_thumbnail;
 
 
   public function hydrate(array $datas)
@@ -102,6 +103,14 @@ class Chapter
   public function setTrashChapter($trash_chapter)
   {
     $this->trash_chapter = $trash_chapter;
+  }
+  public function getNameThumbnail()
+  {
+    return $this->name_thumbnail;
+  }
+  public function setNameThumbnail($name_thumbnail)
+  {
+    $this->name_thumbnail = $name_thumbnail;
   }
   public function getResumeContent($param = 400) {
     $this->setContent(substr($this->content,0,$param));

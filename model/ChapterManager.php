@@ -8,7 +8,7 @@ class ChapterManager extends DbManager
   public function getChapters()
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, trash_chapter FROM chapters ORDER BY creation_date DESC');
+    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, trash_chapter, name_thumbnail FROM chapters ORDER BY creation_date DESC');
     $req->execute();
 
     $chapters = array();
@@ -76,11 +76,12 @@ class ChapterManager extends DbManager
 
   }
 
-  public function newChapter($params)
+  public function newChapter($params, $nameUpFile)
   {
+
       $db = $this->dbConnect();
-      $req = $db->prepare('INSERT INTO chapters(title, content, creation_date) VALUES(?, ?, NOW()) ');
-      $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent')));
+      $req = $db->prepare('INSERT INTO chapters(title, content, creation_date, edit_date, trash_chapter, name_thumbnail) VALUES(?, ?, NOW(), NULL, 0, ?) ');
+      $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent'), $nameUpFile));
   }
   public function trashChapter($chapterId)
   {
@@ -101,6 +102,16 @@ class ChapterManager extends DbManager
     $db = $this->dbConnect();
     $req = $db->prepare('DELETE FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
+
+  }
+  public function showStatus($name)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare('SHOW TABLE STATUS WHERE name = ?');
+    $req->execute(array($name));
+    $data = $req->fetch(PDO::FETCH_ASSOC);
+
+    return $data;
 
   }
   //

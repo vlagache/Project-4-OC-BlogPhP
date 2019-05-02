@@ -7,7 +7,7 @@
 
 
 
-  <form action="index.php?action=sendNewChapter" method="post">
+  <form action="index.php?action=sendNewChapter" method="post" enctype="multipart/form-data">
 
      <div class="row">
        <div class="col s12 m10">
@@ -17,6 +17,23 @@
          </div>
        </div>
      </div>
+
+
+     <div class="row">
+       <div class="col s12 m10">
+         <div class="file-field input-field">
+           <div class="btn">
+             <span>Fichier</span>
+             <input type="file" name="thumbnail" id="thumbnail">
+           </div>
+           <div class="file-path-wrapper">
+             <input class="file-path validate" type="text" placeholder="Chargez une miniature pour votre article">
+           </div>
+         </div>
+       </div>
+     </div>
+
+
 
      <div class="row">
        <div class="col s12 m10">

@@ -279,7 +279,7 @@
         <?php foreach($comments as $comment): ?>
             <?php if($comment->getHiddenCom() == 0) :?>
               <tr <?php if($comment->getReportCom() == 1 ):?>class="report" <?php endif ?>>
-                <td><?= $comment->getComment() ?></td>
+                <td><?= $comment->getResumeComment() ?></td>
                 <td><?= $comment->getCommentDate()->format('d/m/Y') ?></td>
                 <td><?= $comment->getTitle() ?></td>
                 <td><?= $comment->getAuthor() ?></td>
@@ -345,7 +345,7 @@
           <?php foreach($comments as $comment):?>
             <?php if($comment->getHiddenCom() == 1):?>
               <tr>
-                <td><?= $comment->getComment() ?></td>
+                <td><?= $comment->getResumeComment() ?></td>
                 <td><?= $comment->getCommentDate()->format('d/m/Y') ?></td>
                 <td><?= $comment->getAuthor() ?></td>
                 <td><?= $comment->getHiddenBy() ?></td>

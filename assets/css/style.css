@@ -73,7 +73,7 @@ nav .sidenav-trigger .material-icons
 {
   margin-top: 3%;
 }
-#chapters .material-icons,
+#chapters .material-icons
 {
   color: #26a69a;
 }
@@ -113,23 +113,30 @@ nav .sidenav-trigger .material-icons
 }
 #sliderComment
 {
-  font-size: 1.1em;
+  font-size: 1.2em;
   width: 80%;
   height: 40%;
-  overflow: hidden;
   position:absolute;
   top:45%;
   left: 10%;
 
 }
+#sliderDate
+{
+  font-size: 1em;
+  position:absolute;
+  font-style: italic;
+  top:35%;
+  left: 10%;
+}
 #sliderAuthor
 {
   font-size: 2em;
   position:absolute;
-  top:25%;
+  top:17%;
   left: 10%;
-
 }
+
 /* AUTHOR VIEW */
 #authorContent
 {
