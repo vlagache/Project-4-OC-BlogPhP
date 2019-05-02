@@ -111,4 +111,15 @@ class comment
     $date = new DateTime($hidden_date);
     $this->hidden_date = $date;
   }
+  public function getResumeComment($param = 350)
+  {
+    if(strlen($this->comment) > $param)
+    {
+      $this->setComment(substr($this->comment,0,$param)); //
+      $this->comment = $this->comment . ' [...]';
+      return $this->getComment();
+    } else {
+      return $this->getComment();
+    }
+  }
 }

@@ -1,10 +1,6 @@
+/* **************** MATERIALIZE JS **************** */
   M.AutoInit();
 
-/* Menu Burger */
-  document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, options);
-});
 /* Floating Button */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,4 +9,15 @@ document.addEventListener('DOMContentLoaded', function() {
     direction: 'left',
     hoverEnabled: false
   });
+});
+
+/* **************** Requete AJAX  **************** */
+
+
+ajaxGet("api.php", function (reponse){
+ var datas = JSON.parse(reponse);
+ console.log(datas);
+ sliderObj  = new Slider(datas);
+ sliderObj.contentSlider();
+ sliderObj.autoSlider();
 });

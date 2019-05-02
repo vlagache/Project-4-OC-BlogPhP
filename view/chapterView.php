@@ -71,7 +71,7 @@
                    <?php if($comment->getHiddenCom() == 1):?>
                      <p>*** Message supprimé par l'administrateur *** </p>
                    <?php else : ?>
-                     <em><?= $comment->getComment() ?></em>
+                     <em><?= $comment->getResumeComment() ?></em>
                      <div>
                        <p>
                          <!-- Modal Trigger -->

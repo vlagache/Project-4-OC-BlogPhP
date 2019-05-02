@@ -47,35 +47,15 @@
   </div>
 </div>
 
-<div id="lastComments">
-  <div class="container">
-    <div class="row">
-      <div class=" col s12 m8">
-        <div class="card commentCard">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="<?= ASSETS;?>images/pen.jpg">
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Derniers commentaires publiés<i class="material-icons right">more_vert</i></span>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Derniers commentaires publiés<i class="material-icons right">close</i></span>
-            <p>
-              <?php foreach ($comments as $key => $comment): ?>
-                <?php if ($key<=5): ?>
-                    <p>
-                        <strong><?= $comment->getAuthor() ?></strong>
-                        le <?= $comment->getCommentDate()->format('d/m/Y') ?> à propos du <a href="index.php?action=chapter&amp;id=<?= $comment->getChapterId()?>"><?= $comment->getTitle() ?> </a>
-                    </p>
-                    <p class="comment">
-                        <?= $comment->getComment() ?>
-                    </p>
-                <?php endif ?>
-              <?php endforeach ?>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div id="sliderCom">
+  <i class="material-icons quote-left">
+    format_quote
+  </i>
+  <div id="sliderAuthor">
   </div>
+  <div id="sliderComment">
+  </div>
+  <i class="material-icons quote-right">
+    format_quote
+  </i>
 </div>

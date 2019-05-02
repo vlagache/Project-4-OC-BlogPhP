@@ -2,7 +2,7 @@
 class CommentManager extends DbManager {
 
 
-  // Return 5 last comments
+  // Return alll  comments
   public function getLastComments()
   {
     $db = $this->dbConnect();

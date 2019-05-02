@@ -13,15 +13,14 @@ class ChapterController {
     public function listChapters($params)
     {
       $chapterManager = new ChapterManager();
-      $commentManager = new CommentManager();
-
-
       $chapters = $chapterManager->getChapters();
-      $comments = $commentManager->getLastComments();
+
+
+
 
       $title = 'Billet simple pour l\'Alaska par Jean Forteroche';
       $myView = new View('home');
-      $myView->render(array('chapters' => $chapters, 'comments' => $comments, 'title' => $title, 'viewActive' => $this->viewActive));
+      $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
     }
 
     public function chapter($params)

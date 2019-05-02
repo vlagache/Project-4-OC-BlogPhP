@@ -74,7 +74,6 @@ nav .sidenav-trigger .material-icons
   margin-top: 3%;
 }
 #chapters .material-icons,
-#lastComments .material-icons
 {
   color: #26a69a;
 }
@@ -85,6 +84,51 @@ nav .sidenav-trigger .material-icons
 .commentCard
 {
   font-size: 1.2em;
+}
+#sliderCom
+{
+  width: 50%;
+  height: 300px;
+  margin-left:auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  position:relative;
+}
+.quote-left
+{
+  position:absolute;
+  top:0%;
+  left: 0%;
+}
+.quote-right
+{
+  position:absolute;
+  bottom:0%;
+  right: 0%;
+}
+#sliderCom .material-icons
+{
+  color:#37474f;
+  font-size: 5em;
+}
+#sliderComment
+{
+  font-size: 1.1em;
+  width: 80%;
+  height: 40%;
+  overflow: hidden;
+  position:absolute;
+  top:45%;
+  left: 10%;
+
+}
+#sliderAuthor
+{
+  font-size: 2em;
+  position:absolute;
+  top:25%;
+  left: 10%;
+
 }
 /* AUTHOR VIEW */
 #authorContent
