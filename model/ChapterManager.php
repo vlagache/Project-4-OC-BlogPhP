@@ -1,7 +1,7 @@
-<!-- Modele de récuperation des données pour la partie Article
-Function qui permettent de récuperer un article ou tout les articles -->
-
 <?php
+/**
+ * [ChapterManager description]
+ */
 class ChapterManager extends DbManager
 {
   // Renvoie tout les chapitres

@@ -22,6 +22,7 @@ class Chapter
       $elements = explode('_', $key); // Ex : creation_date => creation & date
 
       $method = 'set';
+    
       foreach($elements as $e) {
         $method .= ucfirst($e); // setCreationDate
       }
