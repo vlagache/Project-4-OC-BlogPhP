@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <form action="index.php?action=sendEditChapter&amp;id=<?=$chapter->getId() ?>" method="post">
+  <form action="index.php?action=sendEditChapter&amp;id=<?=$chapter->getId() ?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
       <div class="col s12 m10">
@@ -16,6 +16,23 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col s12 m10">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Fichier</span>
+            <input type="file" name="thumbnail" id="thumbnail">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Chargez une miniature pour le chapitre">
+           <span class="helper-text">Pour un affichage optimal de votre miniature , choissisez une photo avec un ratio de 1.5 ( Longueur / Largeur = 1.5 ) </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <div class="row">
       <div class="col s12 m10">

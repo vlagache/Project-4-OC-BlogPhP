@@ -22,7 +22,7 @@ class Chapter
       $elements = explode('_', $key); // Ex : creation_date => creation & date
 
       $method = 'set';
-    
+
       foreach($elements as $e) {
         $method .= ucfirst($e); // setCreationDate
       }
@@ -113,8 +113,14 @@ class Chapter
   {
     $this->name_thumbnail = $name_thumbnail;
   }
-  public function getResumeContent($param = 400) {
-    $this->setContent(substr($this->content,0,$param));
-    return $this->getContent();
+  public function getResumeContent($param = 500) {
+    if(strlen($this->content) > $param)
+    {
+      $this->setContent(substr($this->content,0,$param));
+      $this->content = $this->content . ' [...]';
+      return $this->getContent();
+    } else {
+      return $this->getContent();
+    }
   }
 }

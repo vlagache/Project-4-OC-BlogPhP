@@ -9,7 +9,11 @@ class ChapterController {
       $this->viewActive = $params->getAction();
     }
 
-    // Tout les chapitres
+  /**
+   * [listChapters Send all chapters ]
+   * @param  [type] $params [Request Object ]
+   * @return [type]         [description]
+   */
     public function listChapters($params)
     {
       $chapterManager = new ChapterManager();
@@ -68,8 +72,15 @@ class ChapterController {
     }
     public function sendEditChapter($params)
     {
+
       $chapterManager = new ChapterManager();
-      $chapterManager->updateChapter($params);
+      $chapterEdit = $chapterManager->getChapter($params->getParam('id')); // Object Chapter
+
+
+      $thumbnailController = new ThumbnailController();
+      $nameImg = $thumbnailController->remplace($chapterEdit->getNameThumbnail(),$chapterEdit->getId());
+
+      $chapterManager->updateChapter($params,$nameImg);
       header('Location: index.php?action=adminArea');
     }
 
@@ -93,7 +104,9 @@ class ChapterController {
 
       $chapterManager = new ChapterManager();
       $thumbnailController = new ThumbnailController();
-      $nameImg = $thumbnailController->upload();
+
+      $statusChapters = $chapterManager->showStatus('chapters');
+      $nameImg = $thumbnailController->upload($statusChapters['Auto_increment']);
 
       $chapterManager->newChapter($params, $nameImg);
 
@@ -129,9 +142,18 @@ class ChapterController {
       {
         $chapterManager = new ChapterManager();
         $commentManager = new CommentManager();
+        $thumbnailController = new ThumbnailController();
+
+
+        $chapterDelete = $chapterManager->getChapter($params->getParam('id')); // Objet Chapter
+        $nameImgToDelete = $chapterDelete->getNameThumbnail(); // Nom de la miniature du chapitre à delete
+        $thumbnailController->delete($nameImgToDelete); // Delete de la miniature
 
         $chapterManager->deleteChapter($params->getParam('id'));
         $commentManager->deleteAllComments($params->getParam('id'));
+
+
+
         header('Location: index.php?action=adminArea');
       } else
       {

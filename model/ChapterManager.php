@@ -26,7 +26,7 @@ class ChapterManager extends DbManager
   public function getChapter($chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date FROM chapters WHERE id = ?');
+    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, name_thumbnail FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
     $data = $req->fetch(PDO::FETCH_ASSOC);
 
@@ -68,20 +68,20 @@ class ChapterManager extends DbManager
     return $data['id'];
   }
 
-  public function updateChapter(Request $params)
+  public function updateChapter(Request $params, $nameImg)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('UPDATE chapters SET content = ? , title = ? , edit_date = NOW()  WHERE id = ?');
-    $req->execute(array($params->getParam('tinyMceContent'),$params->getParam('titleChapter'),$params->getParam('id')));
+    $req = $db->prepare('UPDATE chapters SET content = ? , title = ? , edit_date = NOW(), name_thumbnail = ?   WHERE id = ?');
+    $req->execute(array($params->getParam('tinyMceContent'),$params->getParam('titleChapter'),$nameImg,$params->getParam('id')));
 
   }
 
-  public function newChapter($params, $nameUpFile)
+  public function newChapter($params, $nameImg)
   {
 
       $db = $this->dbConnect();
       $req = $db->prepare('INSERT INTO chapters(title, content, creation_date, edit_date, trash_chapter, name_thumbnail) VALUES(?, ?, NOW(), NULL, 0, ?) ');
-      $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent'), $nameUpFile));
+      $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent'), $nameImg));
   }
   public function trashChapter($chapterId)
   {

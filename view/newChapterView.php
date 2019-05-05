@@ -27,7 +27,8 @@
              <input type="file" name="thumbnail" id="thumbnail">
            </div>
            <div class="file-path-wrapper">
-             <input class="file-path validate" type="text" placeholder="Chargez une miniature pour votre article">
+             <input class="file-path validate" type="text" placeholder="Chargez une miniature pour le chapitre">
+            <span class="helper-text">Pour un affichage optimal de votre miniature , choissisez une photo avec un ratio de 1.5 ( Longueur / Largeur = 1.5 ) </span>
            </div>
          </div>
        </div>

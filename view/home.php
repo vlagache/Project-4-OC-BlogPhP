@@ -14,7 +14,7 @@
         <div class=" col s12 m6 l6 xl4">
           <div class="card z-depth-2">
             <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="<?= ASSETS;?>images/GD/<?= $chapter->getNameThumbnail() ?>">
+              <img class="activator" src="<?= ASSETS;?>images/thumbnails/<?= $chapter->getNameThumbnail() ?>">
             </div>
             <div class="card-content">
               <span class="card-title activator blue-grey-text text-darken-3">
