@@ -15,6 +15,5 @@ if(isset($_GET['action'])){
   $action = 'listChapters';
 }
 
-
 $routeur = new Routeur($action);
 $routeur->renderController();

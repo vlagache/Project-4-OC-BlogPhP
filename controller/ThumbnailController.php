@@ -68,7 +68,7 @@ class ThumbnailController
       $im_php = imagecrop($im_php, ['x' => $xStrip/2 , 'y' => 0, 'width' => $sizeMin*1.5 , 'height' => $sizeMin]);
     }
 
-    $im_php = imagescale($im_php, 400,265);
+    $im_php = imagescale($im_php, 800,533);
     $nameImg = basename($directoryImg);
 
     $elements = explode('.',$nameImg);

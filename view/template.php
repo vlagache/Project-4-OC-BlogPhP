@@ -118,9 +118,11 @@
               <h5 class="blue-grey-text text-darken-3">Table des matières</h5>
               <ul>
                 <?php foreach ($chapters as $chapter):?>
-                  <li>
-                    <a class="teal-text text-lighten-1" href="index.php?action=chapter&amp;id=<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
-                  </li>
+                  <?php if($chapter->getTrashChapter() == 0 ) :?>
+                    <li>
+                      <a class="teal-text text-lighten-1" href="index.php?action=chapter&amp;id=<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
+                    </li>
+                  <?php endif ?>
                 <?php endforeach ?>
               </ul>
             </div>

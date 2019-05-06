@@ -26,7 +26,7 @@ class ChapterManager extends DbManager
   public function getChapter($chapterId)
   {
     $db=$this->dbConnect();
-    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, name_thumbnail FROM chapters WHERE id = ?');
+    $req = $db->prepare('SELECT id, title, content, creation_date, edit_date, trash_chapter, name_thumbnail FROM chapters WHERE id = ?');
     $req->execute(array($chapterId));
     $data = $req->fetch(PDO::FETCH_ASSOC);
 
