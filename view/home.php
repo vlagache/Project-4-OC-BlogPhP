@@ -10,7 +10,6 @@
 <div id="chapters" class="container row">
   <?php foreach($chapters as $chapter):?>
     <?php if($chapter -> getTrashChapter() == 0 ) :?>
-        <?php $titles[$chapter->getId()] = ($chapter->getTitle());  ?>
         <div class=" col s12 m6 l6 xl4">
           <div class="card z-depth-2">
             <div class="card-image waves-effect waves-block waves-light">
@@ -23,7 +22,7 @@
                   <i class="material-icons right">more_vert</i>
               </span>
               <p>
-                <a href="index.php?action=chapter&amp;id=<?= $chapter->getId() ?>">
+                <a href="<?= HOST?>chapter/id/<?= $chapter->getId() ?>">
                   <span class="teal-text text-lighten-1">
                     LIRE LE CHAPITRE
                   </span>

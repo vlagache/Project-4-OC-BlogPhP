@@ -7,7 +7,7 @@
     <h3>Zone d'administration - <?= $_SESSION['admin'] ?></h3>
 
 
-    <a href="index.php?action=newChapter" class="waves-effect waves-light btn-small"><i class="material-icons right">edit</i>Ecrire un nouveau chapitre</a>
+    <a href="<?= HOST ?>newChapter" class="waves-effect waves-light btn-small"><i class="material-icons right">edit</i>Ecrire un nouveau chapitre</a>
 
     <div class="title">
       <div class="center">
@@ -88,7 +88,7 @@
                 <?php endif ?>
               </td>
               <td>
-                <a href="index.php?action=editChapter&amp;id=<?= $chapter->getId() ?>" class="btn-floating teal lighten-1">
+                <a href="<?= HOST ?>editChapter/id/<?= $chapter->getId()?>" class="btn-floating teal lighten-1">
                   <i class="material-icons">edit</i>
                 </a>
               </td>
@@ -114,7 +114,7 @@
                   </div>
                   <div class="modal-footer">
                     <a class="modal-close btn-flat">Annuler</a>
-                    <a href="index.php?action=trashChapter&amp;id=<?= $chapter->getId() ?>" class="modal-close btn-flat">Confirmer</a>
+                    <a href="<?= HOST ?>trashChapter/id/<?= $chapter->getId()?>" class="modal-close btn-flat">Confirmer</a>
                   </div>
                 </div>
               </td>
@@ -153,7 +153,8 @@
                   <?php endif ?>
                 </td>
                 <td>
-                  <a href="index.php?action=restoreChapter&amp;id=<?= $chapter->getId() ?>" class="btn-floating teal lighten-1">
+
+                  <a href="<?= HOST ?>restoreChapter/id/<?= $chapter->getId() ?>" class="btn-floating teal lighten-1">
                     <i class="material-icons">restore_from_trash</i>
                   </a>
                 </td>
@@ -176,7 +177,7 @@
                     </div>
                     <div class="modal-footer">
                       <a class="modal-close btn-flat">Annuler</a>
-                      <a href="index.php?action=deleteChapter&amp;id=<?= $chapter->getId() ?>" class="modal-close btn-flat">Confirmer</a>
+                      <a href="<?= HOST ?>deleteChapter/id/<?= $chapter->getId() ?>" class="modal-close btn-flat">Confirmer</a>
                     </div>
                   </div>
                 </td>
@@ -284,7 +285,8 @@
                 <td><?= $comment->getTitle() ?></td>
                 <td><?= $comment->getAuthor() ?></td>
                 <td>
-                  <a href="index.php?action=approveComment&amp;id=<?= $comment->getId() ?>" class="btn-floating teal lighten-1">
+
+                  <a href="<?= HOST ?>approveComment/id/<?= $comment->getId()?>" class="btn-floating teal lighten-1">
                     <i class="material-icons">check</i>
                   </a>
                 </td>
@@ -310,7 +312,7 @@
                     </div>
                     <div class="modal-footer">
                       <a class="modal-close btn-flat">Annuler</a>
-                      <a href="index.php?action=hiddenComment&amp;id=<?= $comment->getId() ?>" class="modal-close btn-flat">Confirmer</a>
+                      <a href="<?= HOST ?>hiddenComment/id/<?= $comment->getId() ?>" class="modal-close btn-flat">Confirmer</a>
                     </div>
                   </div>
                 </td>
@@ -351,7 +353,7 @@
                 <td><?= $comment->getHiddenBy() ?></td>
                 <td><?= $comment->getHiddenDate()->format('d/m/Y à H:i') ?></td>
                 <td>
-                  <a href="index.php?action=restoreComment&amp;id=<?= $comment->getId() ?>" class="btn-floating teal lighten-1">
+                  <a href="<?= HOST ?>restoreComment/id/<?= $comment->getId() ?>" class="btn-floating teal lighten-1">
                     <i class="material-icons">restore_from_trash</i>
                   </a>
 
@@ -375,7 +377,7 @@
                     </div>
                     <div class="modal-footer">
                       <a class="modal-close btn-flat">Annuler</a>
-                      <a href="index.php?action=deleteComment&amp;id=<?= $comment->getId() ?>" class="modal-close btn-flat">Confirmer</a>
+                      <a href="<?= HOST ?>deleteComment/id/<?= $comment->getId() ?>" class="modal-close btn-flat">Confirmer</a>
                     </div>
                   </div>
                 </td>

@@ -68,20 +68,20 @@ class ChapterManager extends DbManager
     return $data['id'];
   }
 
-  public function updateChapter(Request $params, $nameImg)
+  public function updateChapter(Request $request, $nameImg)
   {
     $db=$this->dbConnect();
     $req = $db->prepare('UPDATE chapters SET content = ? , title = ? , edit_date = NOW(), name_thumbnail = ?   WHERE id = ?');
-    $req->execute(array($params->getParam('tinyMceContent'),$params->getParam('titleChapter'),$nameImg,$params->getParam('id')));
+    $req->execute(array($request->get('tinyMceContent'),$request->get('titleChapter'),$nameImg,$request->get('id')));
 
   }
 
-  public function newChapter($params, $nameImg)
+  public function newChapter($request, $nameImg)
   {
 
       $db = $this->dbConnect();
       $req = $db->prepare('INSERT INTO chapters(title, content, creation_date, edit_date, trash_chapter, name_thumbnail) VALUES(?, ?, NOW(), NULL, 0, ?) ');
-      $req->execute(array($params->getParam('titleChapter'), $params->getParam('tinyMceContent'), $nameImg));
+      $req->execute(array($request->get('titleChapter'), $request->get('tinyMceContent'), $nameImg));
   }
   public function trashChapter($chapterId)
   {

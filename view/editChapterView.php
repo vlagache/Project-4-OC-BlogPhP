@@ -6,7 +6,8 @@
     </div>
   </div>
 
-  <form action="index.php?action=sendEditChapter&amp;id=<?=$chapter->getId() ?>" method="post" enctype="multipart/form-data">
+
+  <form action="<?= HOST ?>sendEditChapter/id/<?= $chapter->getId()?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
       <div class="col s12 m10">
@@ -54,7 +55,7 @@
   <div class="returnHome">
     <div class="row center">
       <div class="col s12 ">
-        <a href="index.php?action=adminAuth" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
+        <a href="<?= HOST?>adminArea" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
       </div>
     </div>
   </div>

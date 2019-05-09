@@ -5,7 +5,7 @@ create routes and find controller
 */
 class Routeur
 {
-    private $action;
+    private $action; // url ex chapter/id/25
     private $controller;
     private $routes = [
                           'chapter'          => array('controller' => 'ChapterController', 'method' => 'chapter'),
@@ -33,33 +33,73 @@ class Routeur
                           'checkPassword'    => array('controller' => 'AdminController', 'method' => 'checkPassword'),
                           'adminArea'        => array('controller' => 'AdminController', 'method' => 'adminArea'),
                           'logout'           => array('controller' => 'AdminController', 'method' => 'logout'),
-                          'author'           => array('controller' => 'AdminController', 'method' => 'author')
+                          'author'           => array('controller' => 'AdminController', 'method' => 'author'),
+
+                          'displayComment' =>   array('controller' => 'ApiController', 'method' => 'displayComment')
                           // ajouter les routes
                       ];
-    private $params = array();
+
 
     public function __construct($action)
     {
         $this->action = $action;
-        $this->params = new Request($this->action);
+
+        $route = $this->getRoute();
+        $params = $this->getParams();
+
+        // $this->params = new Request($this->action);
+        $request = new Request();
+        $request->setRoute($route);
+        $request->setParams($params);
+
+        $this->request = $request;
 
     }
+    public function getRoute()
+    {
+      $elements = explode('/',$this->action);
+      return $elements[0]; // ex $action = chapter/30/25 ; return chapter;
+    }
+    public function getParams()
+    {
+      $params = array();
+      // extract GET Params
+      $elements = explode('/',$this->action);
+      unset($elements[0]);
+
+      for($i = 1; $i<count($elements); $i++)
+      {
+          $params[$elements[$i]] = $elements[$i+1];
+          $i++;
+      }
+      // extract POST params
+      if($_POST)
+      {
+          foreach($_POST as $key => $val)
+          {
+              $params[$key] = $val;
+          }
+      }
+      return $params;
+    }
+
 
     public function renderController()
     {
       try{
-            if(key_exists($this->action, $this->routes)) { // Ex : si chapter present dans routes[]
-                $route = $this->routes[$this->action]; // $route = 'controller' => Front , 'method' => 'chapter'
+
+            $request = $this->request;
+
+            if(key_exists($request->getRoute(), $this->routes)) { // Ex : si chapter present dans routes[]
+                $route = $this->routes[$request->getRoute()]; // $route = 'controller' => Front , 'method' => 'chapter'
                 $controller = $route['controller']; // $ controller = Front
                 $method     = $route['method'];  // $method = chapter
-                $myController = new $controller($this->params); // $myController = new Front()
-                $myController->$method($this->params);  // $myController -> chapter($params)
+                $myController = new $controller($request); // $myController = new Front()
+                $myController->$method($request);  // $myController -> chapter($params)
             } else {
               throw new Exception('Page inexistante');
             }
           } catch(Exception $e) {
-            // $myController = new Front();
-            // $viewActive = $myController -> menuActive($this->params);
             $viewActive = '';
             $chapterManager = new ChapterManager();
             $chapters = $chapterManager->getChapters(); // Footer

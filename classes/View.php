@@ -20,4 +20,11 @@ class View
      require(VIEW.'template.php');
 
    }
+   public function header()
+   {
+     $template = $this->template;
+     header('Location:' . HOST . $template);
+
+
+   }
 }

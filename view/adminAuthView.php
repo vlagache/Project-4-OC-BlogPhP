@@ -1,6 +1,6 @@
 <div id="authContent">
   <div class="container">
-      <form  action= "index.php?action=checkPassword" method="post">
+      <form  action= "<?=HOST?>checkPassword" method="post">
         <div class="row">
           <div class="col s12 m4 offset-m4">
             <div class="input-field">
@@ -31,7 +31,7 @@
 <div class="returnHome">
   <div class="row center">
     <div class="col s12 ">
-      <a href="index.php?action=listChapters" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
+      <a href="<?= HOST ?>" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
     </div>
   </div>
 </div>

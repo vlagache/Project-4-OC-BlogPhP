@@ -55,7 +55,7 @@
   <div class="returnHome">
     <div class="row center">
       <div class="col s12 ">
-        <a href="index.php?action=adminAuth" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
+        <a href="<?= HOST ?>adminArea" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
       </div>
     </div>
   </div>

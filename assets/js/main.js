@@ -14,9 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 /* **************** Requete AJAX  **************** */
 
 
-ajaxGet("api.php", function (reponse){
+ajaxGet(API_URL+"displayComment", function (reponse){
  var datas = JSON.parse(reponse);
- console.log(datas);
  sliderObj  = new Slider(datas);
  sliderObj.contentSlider();
  sliderObj.autoSlider();

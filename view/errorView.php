@@ -22,7 +22,7 @@
   <div class="returnHome">
     <div class="row center">
       <div class="col s12 ">
-        <a href="index.php?action=listChapters" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
+        <a href="<?= HOST ?>" class="btn-floating teal lighten-1 pulse"><i class="material-icons">home</i></a>
       </div>
     </div>
   </div>

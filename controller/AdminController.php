@@ -2,12 +2,12 @@
 class AdminController {
     private $viewActive;
 
-    public function __construct($params)
+    public function __construct($request)
     {
 
-      $this->viewActive = $params->getAction();
+      $this->viewActive = $request->getRoute();
     }
-    public function author($params)
+    public function author($request)
     {
       $chapterManager = new ChapterManager();
       $chapters = $chapterManager->getChapters(); // Footer
@@ -16,7 +16,7 @@ class AdminController {
       $myView = new View('authorView');
       $myView-> render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
     }
-    public function adminAuth($params){
+    public function adminAuth($request){
 
       $viewActive = $this->viewActive;
 
@@ -42,15 +42,18 @@ class AdminController {
       }
 
     }
-    public function checkPassword($params){
-      if (!null == $params->getParam('password') && !null == $params->getParam('login'))
+    public function checkPassword($request){
+      if (!null == $request->get('password') && !null == $request->get('login'))
       {
         $adminManager = new AdminManager();
-        $admin = $adminManager->getAdmin($params->getParam('login'));
-        if (password_verify($params->getParam('password'),$admin['password']))
+        $admin = $adminManager->getAdmin($request->get('login'));
+        if (password_verify($request->get('password'),$admin['password']))
         {
           $_SESSION['admin'] = $admin['login'];
-          header('Location: index.php?action=adminArea');
+          $myView = new View('adminArea');
+          $myView -> header();
+          // header('Location: ' . HOST . 'adminArea');
+
         } else {
           throw new Exception('Mauvais identifiant ou mauvais mot de passe ');
         }
@@ -59,7 +62,7 @@ class AdminController {
       throw new Exception ('Identifiant ou Mot de passe non saisi');
       }
     }
-    public function adminArea($params){
+    public function adminArea($request){
 
       $chapterManager = new ChapterManager();
       $commentManager = new CommentManager();
@@ -82,7 +85,7 @@ class AdminController {
       }
 
     }
-    public function logout($params)
+    public function logout($request)
     {
       // Suppression des variables de session et de la session
       $_SESSION = array();
@@ -91,27 +94,7 @@ class AdminController {
       // Suppression des cookies de connexion automatique
       setcookie('login', '');
       setcookie('password', '');
-      header('Location: index.php');
+      header('Location:' . HOST);
     }
 
 }
-
-
-//
-// // Affiche ou cache en fonction de l'existence de $_SESSION['admin'];
-//   public function adminLog($params){
-//     $admin = array();
-//
-//     if(isset($_SESSION['admin'])){
-//       $admin =  [
-//                     'adminCo' => 'div-show',
-//                     'adminDeco' => 'div-hide'
-//                 ];
-//     } else {
-//       $admin =  [
-//                     'adminCo' => 'div-hide',
-//                     'adminDeco' => 'div-show'
-//                 ];
-//     }
-//     return $admin;
-//   }

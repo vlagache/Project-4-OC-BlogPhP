@@ -3,18 +3,18 @@ class ChapterController {
     private $viewActive;
 
 
-    public function __construct($params)
+    public function __construct($request)
     {
 
-      $this->viewActive = $params->getAction();
+      $this->viewActive = $request->getRoute();
     }
 
   /**
    * [listChapters Send all chapters ]
-   * @param  [type] $params [Request Object ]
+   * @param  [type] $request [Request Object ]
    * @return [type]         [description]
    */
-    public function listChapters($params)
+    public function listChapters($request)
     {
       $chapterManager = new ChapterManager();
       $chapters = $chapterManager->getChapters();
@@ -27,21 +27,21 @@ class ChapterController {
       $myView->render(array('chapters' => $chapters, 'title' => $title, 'viewActive' => $this->viewActive));
     }
 
-    public function chapter($params)
+    public function chapter($request)
     {
 
-      if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
+      if (!null == $request->get('id') && $request->get('id') > 0 )
       {
         $chapterManager = new ChapterManager();
         $commentManager = new CommentManager();
 
 
-        $chapter = $chapterManager->getChapter($params->getParam('id'));
+        $chapter = $chapterManager->getChapter($request->get('id'));
 
         if ($chapter->getTrashChapter() == 0)
         {
           $chapters = $chapterManager->getChapters(); // Footer
-          $comments = $commentManager->getComments($params->getParam('id'));
+          $comments = $commentManager->getComments($request->get('id'));
 
           $title = $chapter->getTitle();
           $myView = new View('chapterView');
@@ -55,15 +55,15 @@ class ChapterController {
         throw new Exception('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
       }
     }
-    public function editChapter($params)
+    public function editChapter($request)
     {
       if (isset($_SESSION['admin']))
       {
-        if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
+        if (!null == $request->get('id') && $request->get('id') > 0 )
         {
           $chapterManager = new ChapterManager();
 
-          $chapter = $chapterManager->getChapter($params->getParam('id'));
+          $chapter = $chapterManager->getChapter($request->get('id'));
           $chapters = $chapterManager->getChapters();
 
 
@@ -78,21 +78,22 @@ class ChapterController {
         throw new Exception('Acces non autorisé ');
       }
     }
-    public function sendEditChapter($params)
+    public function sendEditChapter($request)
     {
 
       $chapterManager = new ChapterManager();
-      $chapterEdit = $chapterManager->getChapter($params->getParam('id')); // Object Chapter
+      $chapterEdit = $chapterManager->getChapter($request->get('id')); // Object Chapter
 
 
       $thumbnailController = new ThumbnailController();
       $nameImg = $thumbnailController->remplace($chapterEdit->getNameThumbnail(),$chapterEdit->getId());
 
-      $chapterManager->updateChapter($params,$nameImg);
-      header('Location: index.php?action=adminArea');
+      $chapterManager->updateChapter($request,$nameImg);
+      $myView = new View('adminArea');
+      $myView -> header();
     }
 
-    public function newChapter($params)
+    public function newChapter($request)
     {
       if (isset($_SESSION['admin']))
       {
@@ -107,7 +108,7 @@ class ChapterController {
         throw new Exception('Acces non autorisé ');
       }
     }
-    public function sendNewChapter($params)
+    public function sendNewChapter($request)
     {
 
       $chapterManager = new ChapterManager();
@@ -116,35 +117,38 @@ class ChapterController {
       $statusChapters = $chapterManager->showStatus('chapters');
       $nameImg = $thumbnailController->upload($statusChapters['Auto_increment']);
 
-      $chapterManager->newChapter($params, $nameImg);
+      $chapterManager->newChapter($request, $nameImg);
 
-      header('Location: index.php?action=adminArea');
+      $myView = new View('adminArea');
+      $myView -> header();
     }
-    public function trashChapter($params)
+    public function trashChapter($request)
     {
       if (isset($_SESSION['admin']))
       {
         $chapterManager = new ChapterManager();
-        $chapterManager->trashChapter($params->getParam('id'));
-        header('Location: index.php?action=adminArea');
+        $chapterManager->trashChapter($request->get('id'));
+        $myView = new View('adminArea');
+        $myView -> header();
       } else
       {
         throw new Exception('Acces non autorisé ');
       }
     }
-    public function restoreChapter($params)
+    public function restoreChapter($request)
     {
       if (isset($_SESSION['admin']))
       {
         $chapterManager = new ChapterManager();
-        $chapterManager->restoreChapter($params->getParam('id'));
-        header('Location: index.php?action=adminArea');
+        $chapterManager->restoreChapter($request->get('id'));
+        $myView = new View('adminArea');
+        $myView -> header();
       } else
       {
         throw new Exception('Acces non autorisé ');
       }
     }
-    public function deleteChapter($params)
+    public function deleteChapter($request)
     {
       if (isset($_SESSION['admin']))
       {
@@ -153,16 +157,17 @@ class ChapterController {
         $thumbnailController = new ThumbnailController();
 
 
-        $chapterDelete = $chapterManager->getChapter($params->getParam('id')); // Objet Chapter
+        $chapterDelete = $chapterManager->getChapter($request->get('id')); // Objet Chapter
         $nameImgToDelete = $chapterDelete->getNameThumbnail(); // Nom de la miniature du chapitre à delete
         $thumbnailController->delete($nameImgToDelete); // Delete de la miniature
 
-        $chapterManager->deleteChapter($params->getParam('id'));
-        $commentManager->deleteAllComments($params->getParam('id'));
+        $chapterManager->deleteChapter($request->get('id'));
+        $commentManager->deleteAllComments($request->get('id'));
 
 
 
-        header('Location: index.php?action=adminArea');
+        $myView = new View('adminArea');
+        $myView -> header();
       } else
       {
         throw new Exception('Acces non autorisé ');

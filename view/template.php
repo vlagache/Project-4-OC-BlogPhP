@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -25,7 +24,10 @@
             <meta name="viewport" content="width=device-width">
 
 
-
+    <!-- config Apli JS -->
+    <script type="text/javascript">
+      const API_URL = "<?= HOST;?>";
+    </script>
 
     </head>
 
@@ -37,20 +39,20 @@
           <div class="navbar-fixed">
             <nav class="white teal-text text-lighten-1">
               <div class="nav-wrapper">
-                <a href="#" class="blue-grey-text text-darken-3 brand-logo">JEAN FORTEROCHE</a>
+                <a href="<?= HOST ?>" class="blue-grey-text text-darken-3 brand-logo">JEAN FORTEROCHE</a>
                 <a href="#" data-target="mobile-demo" class=" sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                   <li <?php if ($viewActive == 'listChapters'): ?>class="selected"<?php endif ?>>
-                    <a href="index.php">ACCUEIL</a>
+                    <a href="<?= HOST ?>">ACCUEIL</a>
                   </li>
                   <li <?php if ($viewActive == 'author'):?>class="selected"<?php endif ?> >
-                    <a href="index.php?action=author">A PROPOS</a>
+                    <a href="<?= HOST ?>author">A PROPOS</a>
                   </li>
                   <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
-                    <a href="index.php?action=chapter&id=1">LECTURE</a>
+                    <a href="<?= HOST ?>chapter/id/1">LECTURE</a>
                   </li>
                   <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
-                    <a href="index.php?action=adminAuth">ADMINISTRATION</a>
+                    <a href="<?= HOST?>adminAuth">ADMINISTRATION</a>
                   </li>
                   <li>
                     <?php if(isset($_SESSION['admin'])):?>
@@ -66,16 +68,16 @@
 
           <ul class="sidenav" id="mobile-demo">
             <li <?php if ($viewActive == 'listChapters'): ?>class="selected"<?php endif ?>>
-              <a href="index.php">ACCUEIL</a>
+              <a href="<?= HOST ?>">ACCUEIL</a>
             </li>
             <li <?php if ($viewActive == 'author'):?>class="selected"<?php endif ?> >
-              <a href="index.php?action=author">A PROPOS</a>
+              <a href="<?= HOST ?>author">A PROPOS</a>
             </li>
             <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
-              <a href="index.php?action=chapter&id=1">LECTURE</a>
+              <a href="<?= HOST ?>chapter/id/35">LECTURE</a>
             </li>
             <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
-              <a href="index.php?action=adminAuth">ADMINISTRATION</a>
+              <a href="<?= HOST?>adminAuth">ADMINISTRATION</a>
             </li>
             <li>
               <?php if(isset($_SESSION['admin'])):?>
@@ -107,10 +109,10 @@
             <div class="col s12 m6 l6 xl2">
               <h5 class="blue-grey-text text-darken-3">Pages</h5>
               <ul>
-                <li><a class="teal-text text-lighten-1" href="#!">Accueil</a></li>
-                <li><a class="teal-text text-lighten-1" href="#!">A propos </a></li>
-                <li><a class="teal-text text-lighten-1" href="#!">Lecture</a></li>
-                <li><a class="teal-text text-lighten-1" href="#!">Administration</a></li>
+                <li><a class="teal-text text-lighten-1" href="<?= HOST ?>">Accueil</a></li>
+                <li><a class="teal-text text-lighten-1" href="<?= HOST ?>author">A propos </a></li>
+                <li><a class="teal-text text-lighten-1" href="<?= HOST ?>chapter/id/1">Lecture</a></li>
+                <li><a class="teal-text text-lighten-1" href="<?= HOST ?>adminAuth">Administration</a></li>
               </ul>
             </div>
 
@@ -120,7 +122,7 @@
                 <?php foreach ($chapters as $chapter):?>
                   <?php if($chapter->getTrashChapter() == 0 ) :?>
                     <li>
-                      <a class="teal-text text-lighten-1" href="index.php?action=chapter&amp;id=<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
+                      <a class="teal-text text-lighten-1" href="<?= HOST ?>chapter/id/<?= $chapter->getId()?>"><?=$chapter->getTitle()?></a>
                     </li>
                   <?php endif ?>
                 <?php endforeach ?>
@@ -139,15 +141,17 @@
 
         <div class="footer-copyright">
           <div class="container">
-          <a class="teal-text text-lighten-1" href="#!">  © 2019 Vincent Lagache - Projet étudiant OpenClassrooms</a>
+          <a class="teal-text text-lighten-1" href="http://www.vincentlagache.com">  © 2019 Vincent Lagache - Projet étudiant OpenClassrooms</a>
           </div>
         </div>
 
       </footer>
 
-    <script src="assets/js/ajax.js"></script>
-    <script src="assets/js/slider.js"></script>
-    <script src="assets/js/main.js"></script>
+
+      <script src="assets/js/ajax.js"></script>
+      <script src="assets/js/slider.js"></script>
+      <script src="assets/js/main.js"></script>
+
 
     </body>
   </html>

@@ -1,28 +1,39 @@
 <?php
+/**
+ * Class request
+ *
+ * create the request object with params & route ( $action)
+ */
 /*
-Class Request
-stores & return $_GET , $_POST , $_COOKIE ( = $_REQUEST) []
 
-*/
-
+Objet requet contient $action et les parametres
+ */
 class Request
 {
-  private $action;
-  private $request;
+  private $route;
+  private $params;
 
-  public function __construct($action)
+  public function getRoute()
   {
-      $this->action = $action;
-      $this->request = $_REQUEST;
+    return $this->route;
+  }
+  public function setRoute($route)
+  {
+    $this->route = $route;
+  }
+  public function getParams()
+  {
+    return $this->params;
+  }
+  public function setParams($params)
+  {
+    $this->params = $params;
   }
 
-  public function getParam($id)
+  public function get($param)
   {
-    if(!isset($this->request[$id])) return null;
-    return $this->request[$id];
+    if(!isset($this->params[$param])) return null;
+    return $this->params[$param];
   }
-  public function getAction()
-  {
-    return $this->action;
-  }
+
 }

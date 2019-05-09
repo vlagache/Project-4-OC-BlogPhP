@@ -3,25 +3,28 @@
 class CommentController{
   private $viewActive;
 
-  public function __construct($params)
+  public function __construct($request)
   {
 
-    $this->viewActive = $params->getAction();
+    $this->viewActive = $request->getRoute();
   }
 
-  public function addComment($params){
-    if (!null == $params->getParam('id') && $params->getParam('id') > 0 )
+  public function addComment($request){
+    if (!null == $request->get('id') && $request->get('id') > 0 )
     {
-      if(!null == $params->getParam('author') && !null == $params->getParam('comment'))
+      if(!null == $request->get('author') && !null == $request->get('comment'))
       {
         $commentManager = new CommentManager();
-        $affectedLines = $commentManager ->postComment($params->getParam('id'), $params->getParam('author'), $params->getParam('comment'));
+        $affectedLines = $commentManager ->postComment($request->get('id'), $request->get('author'), $request->get('comment'));
 
         if ($affectedLines === false) {
           throw new Exception('Impossible d\'ajouter le commentaire !');
         }
         else {
-            header('Location: index.php?action=chapter&id=' . $params->getParam('id'));
+
+          $myView = new View('chapter/id/'.$request->get('id'));
+          $myView -> header();
+            // header('Location: ' . HOST . 'chapter/id/' . $request->get('id'));
         }
 
       } else {
@@ -31,52 +34,57 @@ class CommentController{
       throw new Exception ('L\'identifiant du billet n\'éxiste pas ou ne correspond pas à un chapitre éxistant');
     }
   }
-  public function reportComment($params)
+  public function reportComment($request)
   {
     $commentManager = new CommentManager();
-    $commentManager->setReportCom($params->getParam('idCom'));
-    header('Location: index.php?action=chapter&id=' . $params->getParam('id'));
+    $commentManager->setReportCom($request->get('idCom'));
+    $myView = new View('chapter/id/'.$request->get('id'));
+    $myView -> header();
   }
-  public function approveComment($params)
+  public function approveComment($request)
   {
     if (isset($_SESSION['admin']))
     {
       $commentManager = new CommentManager();
-      $commentManager->unsetReportCom($params->getParam('id'));
-      header('Location: index.php?action=adminArea');
+      $commentManager->unsetReportCom($request->get('id'));
+      $myView = new View('adminArea');
+      $myView -> header();
     } else {
       throw new Exception('Acces non autorisé ');
     }
   }
-  public function hiddenComment($params)
+  public function hiddenComment($request)
   {
     if (isset($_SESSION['admin']))
     {
       $commentManager = new CommentManager();
-      $commentManager->hiddenComment($params->getParam('id'));
-      header('Location: index.php?action=adminArea');
+      $commentManager->hiddenComment($request->get('id'));
+      $myView = new View('adminArea');
+      $myView -> header();
     } else {
       throw new Exception('Acces non autorisé ');
     }
   }
-  public function restoreComment($params)
+  public function restoreComment($request)
   {
     if (isset($_SESSION['admin']))
     {
       $commentManager = new CommentManager();
-      $commentManager->restoreComment($params->getParam('id'));
-      header('Location: index.php?action=adminArea');
+      $commentManager->restoreComment($request->get('id'));
+      $myView = new View('adminArea');
+      $myView -> header();
     } else {
       throw new Exception('Acces non autorisé');
     }
   }
-  public function deleteComment($params)
+  public function deleteComment($request)
   {
     if (isset($_SESSION['admin']))
     {
       $commentManager = new CommentManager();
-      $commentManager->deleteComment($params->getParam('id'));
-      header('Location: index.php?action=adminArea');
+      $commentManager->deleteComment($request->get('id'));
+      $myView = new View('adminArea');
+      $myView -> header();
     } else {
       throw new Exception('Acces non autorisé');
     }

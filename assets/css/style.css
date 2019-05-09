@@ -91,7 +91,7 @@ nav .sidenav-trigger .material-icons
 }
 #sliderCom
 {
-  width: 50%;
+  width: 900px;
   height: 300px;
   margin-left:auto;
   margin-right: auto;
@@ -235,4 +235,26 @@ table.hilight > tbody > tr.report:hover
 {
   color:#26a69a;
   font-size: 1.5em;
+}
+
+@media all and (max-width: 1320px)
+{
+  #sliderCom
+  {
+    width: 700px;
+  }
+}
+@media all and (max-width: 730px)
+{
+  #sliderCom
+  {
+    width: 95%;
+  }
+}
+@media all and (max-width: 460px)
+{
+  nav .brand-logo
+  {
+    font-size: 1.3em;
+  }
 }
