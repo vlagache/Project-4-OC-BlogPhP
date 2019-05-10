@@ -6,7 +6,7 @@
         <link href="https://fonts.googleapis.com/css?family=Abel|Amatic+SC" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="tinymce/js/tinymce/tinymce.min.js"></script>
+        <script src="<?= HOST ?>tinymce/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
         tinymce.init({
           selector: '#tinyMce',
@@ -148,10 +148,9 @@
       </footer>
 
 
-      <script src="assets/js/ajax.js"></script>
-      <script src="assets/js/slider.js"></script>
-      <script src="assets/js/main.js"></script>
-
+      <script src="<?= ASSETS;?>js/ajax.js"></script>
+      <script src="<?= ASSETS;?>js/main.js"></script>
+      <script src="<?= ASSETS ?>js/slider.js"></script>
 
     </body>
   </html>
