@@ -4,8 +4,8 @@ class MyAutoload
 {
   public static function start()
   {
-    spl_autoload_register(array(__CLASS__, 'autoload'));
     session_start();
+    spl_autoload_register(array(__CLASS__, 'autoload'));
     $root = $_SERVER['DOCUMENT_ROOT']; // D:/wamp64/www
     $host = $_SERVER['HTTP_HOST']; // localhost
 

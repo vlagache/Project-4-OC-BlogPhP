@@ -94,7 +94,9 @@ class AdminController {
       // Suppression des cookies de connexion automatique
       setcookie('login', '');
       setcookie('password', '');
-      header('Location:' . HOST);
+      $myView = new View('');
+      $myView -> header();
+      // header('Location:' . HOST);
     }
 
 }

@@ -28,6 +28,12 @@ class View
    {
      $template = $this->template;
      // header('Location:' . HOST . $template);
-     echo '<script>window.location.href=""+"'.HOST.$template.'"+"";</script>';
+     if ($template == null)
+     {
+       echo '<script>window.location.href=""+"'.HOST.'"+"";</script>';
+     } else
+     {
+       echo '<script>window.location.href=""+"'.HOST.$template.'"+"";</script>';
+     }
    }
 }

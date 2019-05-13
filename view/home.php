@@ -60,3 +60,7 @@
     format_quote
   </i>
 </div>
+
+<script src="<?= ASSETS;?>js/ajax.js"></script>
+<script src="<?= ASSETS;?>js/main.js"></script>
+<script src="<?= ASSETS ?>js/slider.js"></script>

@@ -148,9 +148,7 @@
       </footer>
 
 
-      <script src="<?= ASSETS;?>js/ajax.js"></script>
-      <script src="<?= ASSETS;?>js/main.js"></script>
-      <script src="<?= ASSETS ?>js/slider.js"></script>
+<script src="<?= ASSETS;?>js/materialize.js"></script>
 
     </body>
   </html>

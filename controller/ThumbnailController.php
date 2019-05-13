@@ -40,9 +40,13 @@ class ThumbnailController
   public function remplace($nameImg,$idChapter)
   {
 
-    $this->delete($nameImg);
-    $nameResizeImg = $this->upload($idChapter);
-    return $nameResizeImg;
+
+    if(isset($_FILES['thumbnail']) AND $_FILES['thumbnail']['error'] == 0)
+      {
+        $this->delete($nameImg);
+        $nameResizeImg = $this->upload($idChapter);
+        return $nameResizeImg;
+      }
   }
 /**
  * [resize Resize an image with a ratio of 1.5 ( size 400*265 )]
