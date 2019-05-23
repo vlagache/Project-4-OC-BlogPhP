@@ -10,5 +10,5 @@ Récupérer la saisie d’un formulaire utilisateur en langage PHP</br>
 Créer un site Internet, de sa conception à sa livraison</br>
 Organiser le code en langage PHP</br>
 Insérer ou modifier les données d’une base</br>
-## Site : http://www.blog.vincentlagache.com/
+## Site : http://www.vincentlagache.com/blog
 
