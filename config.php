@@ -10,7 +10,7 @@ class MyAutoload
     $host = $_SERVER['HTTP_HOST']; // localhost
 
     $folder = '/tests/Project-4-OC-BlogPhP';
-    // $folder = '/blog';
+//     $folder = '/blog';
 
     define ('HOST', 'http://' . $host .$folder.'/');
     define ('ROOT', $root .$folder.'/');

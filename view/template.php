@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
@@ -14,6 +14,7 @@
         });
         </script>
 
+        <meta name="description" content="La publication épisodique du nouveau roman de Jean Forteroche , un Billet simple pour l'Alaska" />
 
         <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -141,7 +142,7 @@
 
         <div class="footer-copyright">
           <div class="container">
-          <a class="teal-text text-lighten-1" href="http://www.vincentlagache.com">  © 2019 Vincent Lagache - Projet étudiant OpenClassrooms</a>
+          <a class="teal-text text-lighten-1" href="http://www.vincentlagache.com" target="_blank">  © 2019 Vincent Lagache - Projet étudiant OpenClassrooms</a>
           </div>
         </div>
 

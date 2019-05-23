@@ -1,7 +1,3 @@
-<?php $title = 'Une erreur est survenue'; ?>
-
-<?php ob_start(); ?>
-
 <div id="error">
 
   <div id ="errorContent">
@@ -28,6 +24,3 @@
   </div>
 
 </div>
-
-<?php $content = ob_get_clean(); ?>
-<?php require(VIEW.'template.php'); ?>

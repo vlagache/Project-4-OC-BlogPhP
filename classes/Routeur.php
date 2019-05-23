@@ -105,7 +105,11 @@ class Routeur
             $chapters = $chapterManager->getChapters(); // Footer
 
             $errorMessage = $e->getMessage();
-            require('view/errorView.php');
+
+            $title = 'Une erreur est survenue';
+            $myView = new View('errorView');
+            $myView->render(array('title' => $title, 'errorMessage' => $errorMessage, 'chapters' => $chapters, 'viewActive' => $viewActive));
+
           }
 
     }

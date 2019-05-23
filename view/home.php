@@ -13,11 +13,11 @@
         <div class=" col s12 m6 l6 xl4">
           <div class="card z-depth-2">
             <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="<?= ASSETS;?>images/thumbnails/<?= $chapter->getNameThumbnail() ?>">
+              <img class="activator" src="<?= ASSETS;?>images/thumbnails/<?= $chapter->getNameThumbnail() ?>" alt="image d'illustration du chapitre">
             </div>
             <div class="card-content">
               <span class="card-title activator blue-grey-text text-darken-3">
-                  <?= $chapter->getTitle() ?></br>
+                  <?= $chapter->getTitle() ?><br>
                   <em> publié le <?= $chapter->getCreationDate()->format('d/m/Y') ?></em>
                   <i class="material-icons right">more_vert</i>
               </span>
@@ -31,7 +31,7 @@
             </div>
             <div class="card-reveal">
               <span class="card-title blue-grey-text text-darken-3">
-                <?= $chapter->getTitle() ?></br>
+                <?= $chapter->getTitle() ?><br>
                 <em> publié le <?= $chapter->getCreationDate()->format('d/m/Y') ?></em>
                 <i class="material-icons right">close</i>
               </span>

@@ -39,17 +39,16 @@ class ThumbnailController
    */
   public function remplace($nameImg,$idChapter)
   {
-
-
     if(isset($_FILES['thumbnail']) AND $_FILES['thumbnail']['error'] == 0)
       {
-        $this->delete($nameImg);
+          $this->delete($nameImg);
         $nameResizeImg = $this->upload($idChapter);
         return $nameResizeImg;
       }
+    return null;
   }
 /**
- * [resize Resize an image with a ratio of 1.5 ( size 400*265 )]
+ * [resize Resize an image with a ratio of 1.5 ( size 800*533 )]
  * @param  [String] $directoryImg [file where the image is located ]
  * @return [String] $nameResizeImg [name of resize Img]
  */

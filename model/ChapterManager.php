@@ -47,7 +47,7 @@ class ChapterManager extends DbManager
    * @param  [int] $chapterId [description]
    * @return [string|null] $data['id'] [description]
    */
-  public function getNextId(Int $chapterId) {
+  public function getNextId($chapterId) {
     $db=$this->dbConnect();
     $req = $db->prepare('SELECT id FROM chapters WHERE id > ? AND trash_chapter = 0 ORDER BY id ASC  LIMIT 1');
     $req->execute(array($chapterId));
@@ -59,7 +59,7 @@ class ChapterManager extends DbManager
    * @param  Int    $chapterId [description]
    * @return [string|null]            [description]
    */
-  public function getPreviousId(Int $chapterId)
+  public function getPreviousId($chapterId)
   {
     $db=$this->dbConnect();
     $req = $db->prepare('SELECT id FROM chapters WHERE id < ? AND trash_chapter = 0 ORDER BY id DESC LIMIT 1');

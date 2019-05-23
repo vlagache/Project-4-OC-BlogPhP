@@ -86,7 +86,10 @@ class ChapterController {
 
 
       $thumbnailController = new ThumbnailController();
-      $nameImg = $thumbnailController->remplace($chapterEdit->getNameThumbnail(),$chapterEdit->getId());
+      if(!$nameImg =$thumbnailController->remplace($chapterEdit->getNameThumbnail(),$chapterEdit->getId())) $nameImg = $chapterEdit->getNameThumbnail();
+
+
+
 
       $chapterManager->updateChapter($request,$nameImg);
       $myView = new View('adminArea');
