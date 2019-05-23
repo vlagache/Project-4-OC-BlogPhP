@@ -75,7 +75,7 @@
               <a href="<?= HOST ?>author">A PROPOS</a>
             </li>
             <li <?php if ($viewActive == 'chapter'): ?>class="selected"<?php endif ?>>
-              <a href="<?= HOST ?>chapter/id/35">LECTURE</a>
+              <a href="<?= HOST ?>chapter/id/1">LECTURE</a>
             </li>
             <li <?php if ($viewActive == 'adminAuth' || $viewActive == 'adminArea'): ?>class="selected"<?php endif ?> >
               <a href="<?= HOST?>adminAuth">ADMINISTRATION</a>
