@@ -9,9 +9,8 @@ class MyAutoload
     $root = $_SERVER['DOCUMENT_ROOT']; // D:/wamp64/www
     $host = $_SERVER['HTTP_HOST']; // localhost
 
-    $folder = '/tests/Project-4-OC-BlogPhP';
-//     $folder = '/blog';
-
+    $folder = '/p4';
+    
     define ('HOST', 'http://' . $host .$folder.'/');
     define ('ROOT', $root .$folder.'/');
 

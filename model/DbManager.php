@@ -8,11 +8,11 @@
       $configDb = parse_ini_file("config.ini");
       $loginDb = $configDb['dblogin'];
       $passwordDb = $configDb['dbpassword'];
+      $dbname = $configDb['dbname'];
 
+      $db = new PDO("mysql:host=localhost;dbname={$dbname};charset=utf8", $loginDb, $passwordDb);
 
-      $db = new PDO('mysql:host=db5000071771.hosting-data.io;dbname=dbs66372;charset=utf8', $loginDb, $passwordDb);
-      // $db = new PDO('mysql:host=localhost;dbname=p4-oc;charset=utf8', 'root', 'root');
-      $this->db = $db;
+      $this->db = $db;;
 
     }
 
